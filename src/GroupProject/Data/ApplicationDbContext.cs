@@ -23,7 +23,6 @@ namespace GroupProject.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
         // our services
-        public DbSet<Contributor> Contributors { get; set; }
 
 
     }

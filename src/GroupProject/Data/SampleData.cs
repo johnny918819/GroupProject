@@ -25,9 +25,15 @@ namespace GroupProject.Data
                 // create user
                 stephen = new ApplicationUser
                 {
-                    UserName = "Stephen.Walther@CoderCamps.com",
-                    Email = "Stephen.Walther@CoderCamps.com"
-                };
+                    UserName = "StephenIsMe",
+                    Email = "Stephen.Walther@CoderCamps.com",
+                    FirstName = "Stephen",
+                    LastName = "Walther",
+                    City = "Pheonix",
+                    State = "Arizona",
+                    ZipCode = 85258,
+                    Country = "USA"
+    };
                 await userManager.CreateAsync(stephen, "Secret123!");
 
                 // add claims
@@ -41,8 +47,15 @@ namespace GroupProject.Data
                 // create user
                 mike = new ApplicationUser
                 {
-                    UserName = "Mike@CoderCamps.com",
-                    Email = "Mike@CoderCamps.com"
+                    UserName = "MikeIsMe",
+                    Email = "Mike@CoderCamps.com",
+                    FirstName = "Mike",
+                    LastName = "Smith",
+                    City = "Pheonix",
+                    State = "Arizona",
+                    ZipCode = 85258,
+                    Country = "USA"
+
                 };
                 await userManager.CreateAsync(mike, "Secret123!");
             }
