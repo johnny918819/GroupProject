@@ -4,6 +4,12 @@ namespace GroupProject.Controllers {
         public message = 'Hello from the home page!';
     }
 
+    export class MapController {
+        public message = 'This is Live form the Map View';
+        public center = { latitude: 47.671853, longitude: -122.121328 };
+        public zoom = 15;
+    }
+    
 
     export class SecretController {
         public secrets;
