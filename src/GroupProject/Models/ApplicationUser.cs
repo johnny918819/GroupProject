@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using GroupProject.Data;
 
 namespace GroupProject.Models
 {
@@ -15,5 +16,8 @@ namespace GroupProject.Models
         public string State { get; set; }
         public int ZipCode { get; set; }
         public string Country { get; set; }
+
     }
+    
+    
 }

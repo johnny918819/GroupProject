@@ -11,6 +11,9 @@ using Microsoft.Extensions.Logging;
 using GroupProject.Models;
 using GroupProject.Services;
 using GroupProject.ViewModels.Account;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace GroupProject.Controllers
 {
@@ -97,24 +100,51 @@ namespace GroupProject.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody]RegisterViewModel model)
         {
+
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                if (model.IsOrg == true)
                 {
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
-                    // Send an email with this link
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                    //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                    //    "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    _logger.LogInformation(3, "User created a new account with password.");
-                    var userViewModel = await GetUser(user.UserName);
-                    return Ok(userViewModel);
+
+                    var org1 = new ApplicationUser { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, City = model.City, State = model.State, ZipCode = model.ZipCode, Country = model.Country, Claims = { new IdentityUserClaim<string> { ClaimType = "Org1", ClaimValue = "true" } } };
+
+                    var result = await _userManager.CreateAsync(org1, model.Password);
+                    if (result.Succeeded)
+                    {
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
+                        // Send an email with this link
+                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(org1);
+                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = org1.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                        await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
+                            "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                        //await _signInManager.SignInAsync(org1, isPersistent: false);
+                        _logger.LogInformation(3, "User created a new account with password.");
+                        var userViewModel = await GetUser(org1.UserName);
+                        return Ok(userViewModel);
+                    }
                 }
-                AddErrors(result);
+                else
+                {
+                    var user1 = new ApplicationUser { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, City = model.City, State = model.State, ZipCode = model.ZipCode, Country = model.Country, Claims = { new IdentityUserClaim<string> { ClaimType = "User1", ClaimValue = "true" } } };
+
+                    var result = await _userManager.CreateAsync(user1, model.Password);
+                    if (result.Succeeded)
+                    {
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
+                        // Send an email with this link
+                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user1);
+                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user1.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                        await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
+                            "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                        //await _signInManager.SignInAsync(user1, isPersistent: false);
+                        _logger.LogInformation(3, "User created a new account with password.");
+                        var userViewModel = await GetUser(user1.UserName);
+                        return Ok(userViewModel);
+
+                    }
+
+                    AddErrors(result);
+                }
             }
 
             // If we got this far, something failed
@@ -291,11 +321,11 @@ namespace GroupProject.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                 // Send an email with this link
-                //var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                //var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                //   "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
-                //return View("ForgotPasswordConfirmation");
+                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+                   "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
+                return View("ForgotPasswordConfirmation");
             }
 
             // If we got this far, something failed, redisplay form
@@ -399,7 +429,7 @@ namespace GroupProject.Controllers
             var message = "Your security code is: " + code;
             if (model.SelectedProvider == "Email")
             {
-                await _emailSender.SendEmailAsync(await _userManager.GetEmailAsync(user), "Security Code", message);
+                await _emailSender.SendEmailAsync(await _userManager.GetEmailAsync(user), "Security Code", message); /*Execute();*/
             }
             else if (model.SelectedProvider == "Phone")
             {
