@@ -19,10 +19,11 @@
     <div class="container">
         <h1>GroupProject</h1>
         <div>
-<<<<<<< HEAD
+
             <a href="/">Home</a> /
             <a href="/allusers">User List</a> /
             <a href="/mapview">Map View</a> /
+            <a href="/calendar">Calendar</a> /
             <a href="/about">About</a> / 
             <a href="/secret">Secret</a> /
             <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
@@ -30,22 +31,9 @@
             <div ng-show="account.isLoggedIn()">
                 [{{account.getUserName()}}]
             </div>
-=======
-          <a href="/">Home</a> /
-           <a href="/about">About</a>/
-            <a href="/mapview">Map View</a>/
-            <a href="/calendar">Calendar</a>
 
-           / <a href="/secret">Secret</a> /
-           <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
-           <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-           <div ng-show="account.isLoggedIn()">
-               [{{account.getUserName()}}]
-           </div> 
->>>>>>> 3349b8b339e7909dca493894f7be93093cb27b9c
         </div>
         <hr />
-        <!--Hi guy-->
         <ui-view></ui-view>
     </div>
 

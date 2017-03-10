@@ -3,7 +3,7 @@ namespace GroupProject.Controllers {
     export class HomeController {
         public message = 'Hello from the home page!';
     }
-<<<<<<< HEAD
+
     export class AllUsersController {
         public users;
 
@@ -20,13 +20,13 @@ namespace GroupProject.Controllers {
             });
         }
     }
-=======
+
     //------------------------------------------------Gino:This the calendar controller
     export class CalendarController {
         public message = 'We Are Live From The Calendar Controller Where You Can Schedule all Your Recording And Production!';
     }
     //-----------------------------------------------Gino: This is the map controller
->>>>>>> 3349b8b339e7909dca493894f7be93093cb27b9c
+
     export class MapController {
         public message = 'This is Live form the Map View';
         public center = { latitude: 47.671853, longitude: -122.121328 };
