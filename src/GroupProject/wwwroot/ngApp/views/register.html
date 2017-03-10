@@ -20,15 +20,31 @@
 
     <form ng-submit="controller.register()">
         <div>
-            <label>First name:</label>
+            <label>First Name:</label>
             <input ng-model="controller.registerUser.FirstName" />
         </div>
         <div>
-            <label>Last name:</label>
+            <label>Last Name:</label>
             <input ng-model="controller.registerUser.LastName" />
         </div>
         <div>
-            <label>User name:</label>
+            <label>City:</label>
+            <input ng-model="controller.registerUser.City" />
+        </div>
+        <div>
+            <label>State:</label>
+            <input ng-model="controller.registerUser.State" />
+        </div>
+        <div>
+            <label>Zip Code:</label>
+            <input ng-model="controller.registerUser.ZipCode" />
+        </div>
+        <div>
+            <label>Country:</label>
+            <input ng-model="controller.registerUser.Country" />
+        </div>
+        <div>
+            <label>Username:</label>
             <input ng-model="controller.registerUser.UserName" />
         </div>
         <div>
@@ -42,6 +58,14 @@
         <div>
             <label>Confirm Password:</label>
             <input ng-model="controller.registerUser.confirmPassword" />
+        </div>
+        <div>
+            <label>Do you love to create? Do you mostly want to use the app to bring performers together to record or perform?</label>
+            <input type="checkbox" ng-model="controller.registerUser.IsOrg" />
+        </div>
+        <div>
+            <label>Do you just love to perform? Do you mostly want to use this app to connect with others so you can share your performing talents?</label>
+            <input type="checkbox" />
         </div>
         <input type="submit" value="Register" />
     </form>

@@ -3,11 +3,30 @@ namespace GroupProject.Controllers {
     export class HomeController {
         public message = 'Hello from the home page!';
     }
+
+    export class AllUsersController {
+        public users;
+
+
+        public deleteUser(id: string) {
+            this.$http.delete(`/api/users/` + id).then((response) => {
+                this.$state.reload();
+            });
+        }
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+            this.$http.get("/api/users").then((response) => {
+                    this.users = response.data;
+               
+            });
+        }
+    }
+
     //------------------------------------------------Gino:This the calendar controller
     export class CalendarController {
         public message = 'We Are Live From The Calendar Controller Where You Can Schedule all Your Recording And Production!';
     }
     //-----------------------------------------------Gino: This is the map controller
+
     export class MapController {
         public message = 'This is Live form the Map View';
         public center = { latitude: 47.671853, longitude: -122.121328 };
@@ -41,8 +60,6 @@ namespace GroupProject.Controllers {
         ];
        
     }
-    
-
     export class SecretController {
         public secrets;
 
