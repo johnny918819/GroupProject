@@ -14,33 +14,25 @@ namespace GroupProject.Services
     // For more details see this link http://go.microsoft.com/fwlink/?LinkID=532713
     public class AuthMessageSender : IEmailSender, ISmsSender
     {
-        //public AuthMessageSender(IOptions<AuthMessageSenderOptions> optionsAccessor)
-        //{
-        //    Options = optionsAccessor.Value;
-        //}
-
-        //public AuthMessageSenderOptions Options { get; }
 
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            //var myMessage = new SendGrid.SendGridMessage();
-            //var myMessage = new SendGridMessage();
-            //myMessage.AddTo(email);
-            //myMessage.From = new System.Net.Mail.MailAddress("letthatbang@gmail.com", "LTB Admin"); - LEAVE COMMENTED OUT! Stops new user from logging in until email verified
-            //myMessage.From = new SendGridMessage.From("letthatbang@gmail.com", "LTB Admin");
-            //myMessage.Subject = subject;
-            //myMessage.Text = message;
-            //myMessage.Html = message;
-            var credentials = new System.Net.NetworkCredential(
-                "GJCCC",
-                "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");
-
+            var SendGridKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+            Execute(SendGridKey, subject, message, email).Wait();
             return Task.FromResult(0);
-
-            // Create a Web transport for sending email.
-            //var transportWeb = new SendGrid.Web(credentials);
-            //return transportWeb.DeliverAsync(myMessage);
-
+        }
+        public async Task Execute(string apiKey, string subject, string message, string email)
+        {
+            var client = new SendGridClient(apiKey);
+            var myMessage = new SendGridMessage()
+            {
+                From = new EmailAddress("letthatbang@gmail.com", "LTB Admin"),
+                Subject = subject,
+                PlainTextContent = message,
+                HtmlContent = message
+            };
+            myMessage.AddTo(new EmailAddress(email));
+            var response = await client.SendEmailAsync(myMessage);
         }
 
         public Task SendSmsAsync(string number, string message)
