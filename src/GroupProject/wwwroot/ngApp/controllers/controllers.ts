@@ -6,6 +6,7 @@ namespace GroupProject.Controllers {
     export class AllUsersController {
         public users;
 
+
         public deleteUser(id: string) {
             this.$http.delete(`/api/users/` + id).then((response) => {
                 this.$state.reload();
@@ -18,13 +19,11 @@ namespace GroupProject.Controllers {
             });
         }
     }
-
     export class MapController {
         public message = 'This is Live form the Map View';
         public center = { latitude: 47.671853, longitude: -122.121328 };
         public zoom = 15;
     }
-
     export class SecretController {
         public secrets;
 

@@ -4,6 +4,14 @@
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
     <base href="/" />
+    @* This is the fram for the map *@
+    <style>
+        .angular-google-map-container {
+            height: 200px;
+            width: 500px;
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body ng-controller="AccountController as account">
     <div class="container">
@@ -37,8 +45,10 @@
     <script src="/ngapp/app.js"></script>
     <script src="/ngapp/controllers/controllers.js"></script>
     <script src="/ngapp/services/services.js"></script>
-
-
+    @* This is the script for the Google Map feature *@
+    <script src="~/bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="~/bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src="~/bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
     <!-- Security -->
     <script src="/ngapp/controllers/accountcontroller.js"></script>
     <script src="/ngapp/services/accountservice.js"></script>

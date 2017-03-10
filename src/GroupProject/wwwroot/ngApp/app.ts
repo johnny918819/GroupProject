@@ -1,10 +1,14 @@
 namespace GroupProject {
 
-    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap']).config((
+    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap','uiGmapgoogle-maps']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
-        $locationProvider: ng.ILocationProvider
+        $locationProvider: ng.ILocationProvider,
+        uiGmapGoogleMapApiProvider: any
     ) => {
+        uiGmapGoogleMapApiProvider.configure({
+                key: 'AIzaSyBAAwosl9zhJtogtN2BcfcYtgFNZwxeMEA'
+        });
         // Define routes
         $stateProvider
             .state('home', {
