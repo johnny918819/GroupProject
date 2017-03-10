@@ -14,7 +14,7 @@ using System.IO;
 using GroupProject.Data;
 using GroupProject.Models;
 using GroupProject.Services;
-
+using GroupProject.Interfaces;
 
 namespace GroupProject
 {
@@ -55,7 +55,9 @@ namespace GroupProject
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
-            
+            // Our services.
+            services.AddScoped<IGenericRepository, GenericRepository>();
+            services.AddScoped<IUserServices, UserServices>();
 
             
                         // add security policies

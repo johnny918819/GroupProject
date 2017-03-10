@@ -32,7 +32,7 @@ namespace GroupProject.Data
                     City = "Pheonix",
                     State = "Arizona",
                     ZipCode = 85258,
-                    Country = "USA"
+                    Country = "USA",
     };
                 await userManager.CreateAsync(stephen, "Secret123!");
 
@@ -54,8 +54,7 @@ namespace GroupProject.Data
                     City = "Pheonix",
                     State = "Arizona",
                     ZipCode = 85258,
-                    Country = "USA"
-
+                    Country = "USA",
                 };
                 await userManager.CreateAsync(mike, "Secret123!");
             }

@@ -17,6 +17,12 @@ namespace GroupProject {
                 controller: GroupProject.Controllers.HomeController,
                 controllerAs: 'controller'
             })
+            .state(`allusers`, {
+                url: `/allusers`,
+                templateUrl: `/ngApp/views/allusers.html`,
+                controller: GroupProject.Controllers.AllUsersController,
+                controllerAs: `controller`
+            })
             .state('mapview', {
                 url: '/mapview',
                 templateUrl: '/ngApp/views/mapview.html',
