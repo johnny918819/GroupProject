@@ -12,7 +12,8 @@
     "angular-animate": "1.x",
     "angular-touch": "1.x",
     "angular-ui-router": "0.x",
-    "angular-google-maps": "2.3.2"
+    "angular-google-maps": "2.3.2",
+    "jquery-ui": "1.11.4"
   },
   "resolutions": {
     "angular": "1.6.2"

@@ -28,6 +28,14 @@ namespace GroupProject {
                 templateUrl: '/ngApp/views/secret.html',
                 controller: GroupProject.Controllers.SecretController,
                 controllerAs: 'controller'
+
+            })
+            .state('calendar', {
+                url: '/calendar',
+                templateUrl: '/ngApp/views/calendar.html',
+                controller: GroupProject.Controllers.CalendarController,
+                controllerAs: 'controller'
+
             })
             .state('login', {
                 url: '/login',
