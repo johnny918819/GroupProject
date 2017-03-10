@@ -3,12 +3,14 @@
     <title>GroupProject</title>
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/bower_components/jquery-ui/themes/hot-sneaks/jquery-ui.min.css" rel="stylesheet" /> <!--Gino added-->
+    <link href="~/css/site.min.css" rel="stylesheet" /> <!--Gino added-->
     <base href="/" />
     @* This is the fram for the map *@
     <style>
         .angular-google-map-container {
-            height: 200px;
-            width: 500px;
+            height: 400px;
+            width: 1000px;
             border: 1px solid black;
         }
     </style>
@@ -17,6 +19,7 @@
     <div class="container">
         <h1>GroupProject</h1>
         <div>
+<<<<<<< HEAD
             <a href="/">Home</a> /
             <a href="/allusers">User List</a> /
             <a href="/mapview">Map View</a> /
@@ -27,14 +30,29 @@
             <div ng-show="account.isLoggedIn()">
                 [{{account.getUserName()}}]
             </div>
+=======
+          <a href="/">Home</a> /
+           <a href="/about">About</a>/
+            <a href="/mapview">Map View</a>/
+            <a href="/calendar">Calendar</a>
+
+           / <a href="/secret">Secret</a> /
+           <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
+           <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+           <div ng-show="account.isLoggedIn()">
+               [{{account.getUserName()}}]
+           </div> 
+>>>>>>> 3349b8b339e7909dca493894f7be93093cb27b9c
         </div>
         <hr />
-
+        <!--Hi guy-->
         <ui-view></ui-view>
     </div>
 
     <!-- Library Files -->
-    <script src="/bower_components/angular/angular.js"></script>
+    <script src="~/bower_components/jquery/dist/jquery.min.js"></script> <!--Gino added-->
+    <script src="~/bower_components/jquery-ui/jquery-ui.min.js"></script><!--Gino added-->
+   <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/bower_components/angular-touch/angular-touch.js"></script>
@@ -45,10 +63,10 @@
     <script src="/ngapp/app.js"></script>
     <script src="/ngapp/controllers/controllers.js"></script>
     <script src="/ngapp/services/services.js"></script>
-    @* This is the script for the Google Map feature *@
-    <script src="~/bower_components/lodash/dist/lodash.min.js"></script>
-    <script src="~/bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
-    <script src="~/bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
+    @* This is the script for the Google Map feature *@ <!--Gino added-->
+    <script src="~/bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script><!--Gino added-->
+    <script src="~/bower_components/lodash/dist/lodash.min.js"></script><!--Gino added-->
+    <script src="~/bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script><!--Gino added-->
     <!-- Security -->
     <script src="/ngapp/controllers/accountcontroller.js"></script>
     <script src="/ngapp/services/accountservice.js"></script>
