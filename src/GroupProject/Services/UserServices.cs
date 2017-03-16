@@ -26,10 +26,14 @@ namespace GroupProject.Services
                                            select new ApplicationUser
                                            {
                                                Id = u.Id,
+                                               UserName = u.UserName,
                                                FirstName = u.FirstName,
                                                LastName = u.LastName,
                                                City = u.City,
+                                               State = u.State,
                                                ZipCode = u.ZipCode,
+                                               Talent = u.Talent,
+                                               Email = u.Email,
                                                //Claims = u.Claims
                                            }).ToList();
             return users;
