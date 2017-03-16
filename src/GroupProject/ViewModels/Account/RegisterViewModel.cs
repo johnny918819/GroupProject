@@ -28,6 +28,9 @@ namespace GroupProject.ViewModels.Account
         [Display(Name = "Country")]
         public string Country { get; set; }
 
+        [Display(Name = "Talent")]
+        public string Talent { get; set; }
+
         [Required]
         [Display(Name = "UserName")]
         public string UserName { get; set; }

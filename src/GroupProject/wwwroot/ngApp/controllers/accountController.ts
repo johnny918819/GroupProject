@@ -40,7 +40,10 @@ namespace GroupProject.Controllers {
 
         public login() {
             this.accountService.login(this.loginUser).then(() => {
-                this.$location.path('/');
+                if (sessionStorage.getItem('claims') == `Org1`) {
+                    this.$location.path(`/orgHome`)
+                }else
+                this.$location.path('/userHome');
             }).catch((results) => {
                 this.validationMessages = results;
             });

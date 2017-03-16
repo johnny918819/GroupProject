@@ -1,7 +1,7 @@
 namespace GroupProject.Controllers {
 
     export class HomeController {
-        public message = 'Hello from the home page!';
+
     }
 
     export class AllUsersController {
@@ -15,8 +15,8 @@ namespace GroupProject.Controllers {
         }
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
             this.$http.get("/api/users").then((response) => {
-                    this.users = response.data;
-               
+                this.users = response.data;
+
             });
         }
     }
@@ -28,7 +28,7 @@ namespace GroupProject.Controllers {
     //-----------------------------------------------Gino: This is the map controller
 
     export class MapController {
-        public message = 'This is Live form the Map View';
+        public message = 'This is Live from the Map View';
         public center = { latitude: 47.671853, longitude: -122.121328 };
         public zoom = 4;
         public markers = [
@@ -58,8 +58,46 @@ namespace GroupProject.Controllers {
                 longitude: -122.253665
             }
         ];
-       
+
     }
+   
+    export class UserHomeController {
+        public users;
+        public search;
+
+        fetch() {
+            if (this.search) {
+                console.log(`searching ...`);
+                this.$http.get(`/api/users/`).then((results) => {
+                    this.users = results.data;
+                })
+                    .catch((results) => {
+                        console.error('Could not retrieve data!');
+                    });
+            }
+        }
+        constructor(private $http: ng.IHttpService) { };
+
+    }
+
+    export class OrgHomeController {
+        public users;
+        public search;
+
+        fetch() {
+            if (this.search) {
+                console.log(`searching ...`);
+                this.$http.get(`/api/users/`).then((results) => {
+                    this.users = results.data;
+                })
+                    .catch((results) => {
+                        console.error('Could not retrieve data!');
+                    });
+            }
+        }
+        constructor(private $http: ng.IHttpService) { };
+    }
+
     export class SecretController {
         public secrets;
 
@@ -75,5 +113,5 @@ namespace GroupProject.Controllers {
         public message = 'Hello from the about page!';
     }
 
-   
+
 }

@@ -2,20 +2,28 @@
     <table class="table table-bordered table-condensed table-striped">
         <thead>
             <tr>
+                <th>Username</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>City</th>
+                <th>State</th>
                 <th>Zip</th>
-                <th>Claims</th>
+                <th>Talent</th>
+                <th>Email</th>
+                <!--<th>Claims</th>-->
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="user in controller.users">
+                <td>{{user.userName}}</td>
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
                 <td>{{user.city}}</td>
+                <td>{{user.state}}</td>
                 <td>{{user.zipCode}}</td>
-                <td>{{user.claims}}</td>
+                <td>{{user.talent}}</td>
+                <td>{{user.email}}</td>
+                <!--<td>{{user.claims}}</td>-->
                 <td>
                     <!--<button class="btn btn-success" ui-sref="editProduct({id: controller.prod.id})">Edit</button>-->
                     <button class="btn btn-danger" ng-click="controller.deleteUser(user.id)">Remove</button>

@@ -29,10 +29,11 @@ namespace GroupProject.Data
                     Email = "Stephen.Walther@CoderCamps.com",
                     FirstName = "Stephen",
                     LastName = "Walther",
-                    City = "Pheonix",
+                    City = "Mesa",
                     State = "Arizona",
-                    ZipCode = 85258,
+                    ZipCode = 85205,
                     Country = "USA",
+                    Talent = "drummer",
     };
                 await userManager.CreateAsync(stephen, "Secret123!");
 
@@ -51,10 +52,11 @@ namespace GroupProject.Data
                     Email = "Mike@CoderCamps.com",
                     FirstName = "Mike",
                     LastName = "Smith",
-                    City = "Pheonix",
+                    City = "Scottsdale",
                     State = "Arizona",
                     ZipCode = 85258,
                     Country = "USA",
+                    Talent = "violin",
                 };
                 await userManager.CreateAsync(mike, "Secret123!");
             }
