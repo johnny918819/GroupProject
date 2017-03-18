@@ -4,6 +4,28 @@ namespace GroupProject.Controllers {
 
     }
 
+    export class RatingController {
+        public input;
+        public rating;
+
+        public getIntRating() {
+            this.rating = parseFloat(this.input);
+            return this.rating;
+        }
+
+        public addRating() {
+            this.getIntRating();
+            this.$http.post(`/api/ratings`, this.rating).then((response) => {
+                this.$state.go(`about`);
+            });
+        }
+
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+
+        }
+    }
+
+
     export class AllUsersController {
         public users;
 
