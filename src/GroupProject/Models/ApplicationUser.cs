@@ -18,6 +18,11 @@ namespace GroupProject.Models
         public string Country { get; set; }
         public string Talent { get; set; }
 
+        //profile image prop    
+        public string ProfileImage { get; set; }
+        public string LookingFor { get; set; }
+        public string StatusMessage { get; set; }
+
     }
     
     

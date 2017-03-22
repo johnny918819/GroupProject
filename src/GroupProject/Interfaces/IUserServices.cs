@@ -7,6 +7,7 @@ namespace GroupProject.Interfaces
     {
         List<ApplicationUser> GetUsers();
         ApplicationUser GetUser(string id);
+        void SaveProfile(ApplicationUser user, string id);
         void DeleteUser(string id);
     }
 }

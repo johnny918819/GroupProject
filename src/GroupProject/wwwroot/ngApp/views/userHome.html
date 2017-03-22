@@ -2,19 +2,30 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Welcome Artist {{account.getUserName()}}!</title>
+    <title>Welcome Artist!</title>
 </head>
 <body>
     <div>
+        <h1>Welcome to Let That Bang {{controller.getUserName()}}!!</h1>
+    </div>
+    <div id="userHomeHead" class="col-lg-8 col-lg-offset-2">
+        <br />
+        <img id="profileImg" style="margin-bottom:25px;" ng-src="{{controller.user.profileImage}}" class="img-responsive" />
+        <h1 style="display:inline ; text-transform:capitalize;">{{controller.user.userName}}</h1>
+    </div>
+
+        <div>
         <h3 class="headName">Talent Search</h3>
         <div class="bar">
             <input ng-model="controller.search" ng-model-options="{debounce:1000}" ng-change="controller.fetch()" placeholder="Enter talent, city, or zip" />
         </div>
-        <ul class="data-ctrl" ng-repeat="usr in controller.users | filter: controller.search">
+        <ul class="data-ctrl" ng-repeat="usr in controller.users | filter: controller.search" ui-sref="userHome({id: user.id})">
             <li>
                 <p> Handle: {{usr.userName}} / City: {{usr.city}} / Specialty: {{usr.talent}} / Contact: <a href="mailto:{{usr.email}}">{{usr.email}}</a></p>
             </li>
         </ul>
     </div>
+    <br />
+    <br>
 </body>
 </html>

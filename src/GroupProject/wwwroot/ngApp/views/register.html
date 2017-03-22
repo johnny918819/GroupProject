@@ -9,7 +9,6 @@
     </ul>
 
 </fieldset>
-
 <fieldset>
     <legend>Local Registration</legend>
     <ul>
@@ -17,8 +16,92 @@
             {{message}}
         </li>
     </ul>
+</fieldset>
+    <div class="container">
+        <div class="row centered-form">
+            <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please tell us about yourself!<small>* required</small></h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" ng-submit="controller.register()">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input ng-model="controller.registerUser.FirstName" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="*First Name" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input ng-model="controller.registerUser.LastName" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input ng-model="controller.registerUser.City" type="text" name="city" id="city" class="form-control input-sm" placeholder="City" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input ng-model="controller.registerUser.State" type="text" name="state" id="state" class="form-control input-sm" placeholder="State/Prov i.e. AZ, AB" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input ng-model="controller.registerUser.ZipCode" type="text" name="zip" id="zip" class="form-control input-sm" placeholder="Zip Code, i.e. 12345, A1A 1A1" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input ng-model="controller.registerUser.Country" type="text" name="country" id="country" class="form-control input-sm" placeholder="Country i.e. USA, CA" />
+                                    </div>
+                                </div>
+                            </div>
 
-    <form ng-submit="controller.register()">
+                            <div class="form-group">
+                                <input ng-model="controller.registerUser.Talent" type="text" name="talent" id="talent" class="form-control input-sm" placeholder="Talent i.e. volcalist, engineer, percussionist, lyricist" />
+                            </div>
+
+                            <div class="form-group">
+                                <input ng-model="controller.registerUser.UserName" type="text" name="username" id="username" class="form-control input-sm" placeholder="Username" />
+                            </div>
+
+                            <div class="form-group">
+                                <input ng-model="controller.registerUser.Email" type="email" name="email" id="email" class="form-control input-sm" placeholder="Email" />
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input ng-model="controller.registerUser.password" type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input ng-model="controller.registerUser.confirmPassword" type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Do you love to create? Do you mostly want to use the app to bring performers together to record or perform?</label>
+                                <input type="checkbox" ng-model="controller.registerUser.IsOrg" name="isorg" id="isorg" class="form-control input-xs" />
+                            </div>
+                            <div class="form-group">
+                                <label>Do you just love to perform? Do you mostly want to use this app to connect with others so you can share your performing talents?</label>
+                                <input type="checkbox" name="isuser" id="isuser" class="form-control input-xs" />
+                            </div>
+                            <input type="submit" value="Register" class="btn btn-info btn-block">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--<form ng-submit="controller.register()">
         <div>
             <label>First Name:</label>
             <input ng-model="controller.registerUser.FirstName" />
@@ -48,6 +131,10 @@
             <input ng-model="controller.registerUser.talent" placeholder="i.e. volcalist, engineer, percussionist, lyricist" />
         </div>
         <div>
+            <label>Avatar URL or upload</label>
+            <input ng-model="controller.registerUser.profileImage" />
+        </div>
+        <div>
             <label>Username:</label>
             <input ng-model="controller.registerUser.UserName" />
         </div>
@@ -72,6 +159,6 @@
             <input type="checkbox" />
         </div>
         <input type="submit" value="Register" />
-    </form>
+    </form>-->
 
-</fieldset>
+

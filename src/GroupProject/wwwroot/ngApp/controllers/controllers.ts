@@ -25,7 +25,6 @@ namespace GroupProject.Controllers {
         }
     }
 
-
     export class AllUsersController {
         public users;
 
@@ -85,7 +84,10 @@ namespace GroupProject.Controllers {
    
     export class UserHomeController {
         public users;
+        public user;
         public search;
+        public file;
+        public userId;
 
         fetch() {
             if (this.search) {
@@ -98,9 +100,76 @@ namespace GroupProject.Controllers {
                     });
             }
         }
-        constructor(private $http: ng.IHttpService) { };
 
+        // get single user by id
+        //private getUserById(id) {
+        //    this.userHomeService.getUserById(this.$stateParams[`id`]).then((results) => {
+        //        this.user = results;
+        //    }).catch(() => {
+        //        console.log("error in Profile getUserById");
+        //    });
+        //}
+
+        // get logged in user
+        //private getUserById() {
+        //    this.userHomeService.getUserById(this.isLoggedIn()).then((data) => {
+        //        console.log(this.user);
+        //        this.user = data;
+        //        console.log(data);
+        //    });
+        //}
+        public saveProfile() {
+            if (this.user.profileImage == null) {
+                this.user.profileImage = `/images/defaultUser.png`;
+            }
+            this.userHomeService.saveProfile(this.user).then((data) => {
+                    this.$state.go(`userHome`);
+                }).catch(() => {
+                    console.log(`error in saveProfile`);
+                })
+            
+        }
+
+
+        public pickFile() {
+            this.filepickerService.pick(
+                {
+                    mimetype: `image/*`,
+                    imageQuality: 60
+                },
+                this.fileUploaded.bind(this)
+            );
+        }
+        public fileUploaded(file) {
+            this.file = file;
+            this.user.profileImage = this.file.url;
+            this.$scope.$apply(); // immediate add
+        }
+        public cancel() {
+            this.$state.go(`home`);
+        }
+        public getUserName() {
+            return this.accountService.getUserName();
+        }
+        public getClaim(type) {
+            return this.accountService.getClaim(type);
+        }
+        public isLoggedIn() {
+            return this.accountService.isLoggedIn();
+        }
+        public logout() {
+            this.accountService.logout();
+        }
+
+        constructor(private $http: ng.IHttpService, private filepickerService, private userHomeService: GroupProject.Services.UserHomeService, private accountService: GroupProject.Services.AccountService, private $stateParams: ng.ui.IStateParamsService, private $state: angular.ui.IStateService, private $scope: ng.IScope) {
+            this.$http.get(`/api/users/` + this.$stateParams["id"]).then((results) => {
+                this.user = results.data;
+            })
+            return this.user;
+            //this.getUserById();
+        };
     }
+    angular.module(`GroupProject`).controller(`UserHomeController`, UserHomeController);
 
     export class OrgHomeController {
         public users;

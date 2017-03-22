@@ -10,7 +10,7 @@
         <div class="bar">
             <input ng-model="controller.search" ng-model-options="{debounce:1000}" ng-change="controller.fetch()" placeholder="Enter talent, city, or zip" />
         </div>
-        <ul class="data-ctrl" ng-repeat="usr in controller.users | filter: controller.search">
+        <ul class="data-ctrl" ng-repeat="usr in controller.users | filter: controller.search" ui-sref="userHome({id: user.id})">
             <li>
                 <p> Handle: {{usr.userName}} / City: {{usr.city}} / Specialty: {{usr.talent}} / Contact: <a href="mailto:{{usr.email}}">{{usr.email}}</a></p>
             </li>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using GroupProject.Services;
 using GroupProject.Models;
 using GroupProject.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,14 +16,14 @@ namespace GroupProject.API
     public class UsersController : Controller
     {
         private IUserServices _usrService;
+        private UserManager<ApplicationUser> _userManager;
 
-        public UsersController(IUserServices usrService)
+        public UsersController(IUserServices usrService, UserManager<ApplicationUser> userManager)
         {
-
+            _userManager = userManager;
             _usrService = usrService;
         }
 
-        // GET: api/values
         [HttpGet]
         public List<ApplicationUser> Get()
         {
@@ -33,13 +34,24 @@ namespace GroupProject.API
         [HttpGet("{id}")]
         public ApplicationUser Get(string id)
         {
-            return _usrService.GetUser(id);
+            return _usrService.GetUser(User.Identity.Name
+                );
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Post([FromBody]ApplicationUser user)
         {
+            if (ModelState.IsValid)
+            {
+                var uid = _userManager.GetUserId(User);
+                _usrService.SaveProfile(user, uid);
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // PUT api/values/5

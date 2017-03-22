@@ -1,11 +1,13 @@
 namespace GroupProject {
 
-    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap','uiGmapgoogle-maps']).config((
+    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap','uiGmapgoogle-maps', `angular-filepicker`]).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider,
+        filepickerProvider: any,
         uiGmapGoogleMapApiProvider: any
     ) => {
+        filepickerProvider.setKey("ARWSnpkvLRVOx4AjmhXK3z");
         uiGmapGoogleMapApiProvider.configure({
                 key: 'AIzaSyBAAwosl9zhJtogtN2BcfcYtgFNZwxeMEA'
         });
@@ -30,7 +32,7 @@ namespace GroupProject {
                 controllerAs: 'controller'
             })
             .state(`userHome`, {
-                url: `/userHome`,
+                url: `/userHome/:id`,
                 templateUrl: `/ngApp/views/userHome.html`,
                 controller: GroupProject.Controllers.UserHomeController,
                 controllerAs: `controller`
@@ -39,6 +41,12 @@ namespace GroupProject {
                 url: `/orgHome`,
                 templateUrl: `/ngApp/views/orgHome.html`,
                 controller: GroupProject.Controllers.OrgHomeController,
+                controllerAs: `controller`
+            })
+            .state(`editProfile`, {
+                url: `/editProfile`,
+                templateUrl: `/ngApp/views/editProfile.html`,
+                controller: GroupProject.Controllers.UserHomeController,
                 controllerAs: `controller`
             })
             .state('secret', {
