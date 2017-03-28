@@ -58,11 +58,8 @@ namespace GroupProject
             // Our services.
             services.AddScoped<IGenericRepository, GenericRepository>();
             services.AddScoped<IUserServices, UserServices>();
-<<<<<<< HEAD
             services.AddScoped<IPostService, PostService>();
-=======
             services.AddScoped<IRatingsService, RatingsService>();
->>>>>>> master
 
             
                         // add security policies

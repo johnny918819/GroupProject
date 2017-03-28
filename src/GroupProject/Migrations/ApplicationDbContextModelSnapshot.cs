@@ -95,16 +95,11 @@ namespace GroupProject.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-<<<<<<< HEAD:src/GroupProject/Data/Migrations/ApplicationDbContextModelSnapshot.cs
             modelBuilder.Entity("GroupProject.Models.Post", b =>
-=======
-            modelBuilder.Entity("GroupProject.Models.Rating", b =>
->>>>>>> master:src/GroupProject/Migrations/ApplicationDbContextModelSnapshot.cs
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-<<<<<<< HEAD:src/GroupProject/Data/Migrations/ApplicationDbContextModelSnapshot.cs
                     b.Property<string>("User");
 
                     b.Property<string>("UserId");
@@ -116,7 +111,13 @@ namespace GroupProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Posts");
-=======
+                });
+
+            modelBuilder.Entity("GroupProject.Models.Rating", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
                     b.Property<string>("RatedBy");
 
                     b.Property<float>("RatingActual");
@@ -132,7 +133,6 @@ namespace GroupProject.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Rating");
->>>>>>> master:src/GroupProject/Migrations/ApplicationDbContextModelSnapshot.cs
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>

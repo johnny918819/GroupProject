@@ -16,13 +16,8 @@
             </tr>
         </thead>
         <tbody>
-<<<<<<< HEAD
-            <tr ng-repeat="user in controller.users" ui-sref="userProfile({id: user.id})">
-                <td><img src="{{user.profileImage}}" {{user.userName}}/></td>
-=======
             <tr ng-repeat="user in controller.users">
-                <td ui-sref="userHome({id: user.id})"> <img src="{{user.profileImage}}" /> {{user.userName}} </td>
->>>>>>> master
+                <td ui-sref="userProfile({id: user.id})"> <img src="{{user.profileImage}}" /> {{user.userName}} </td>
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
                 <td>{{user.city}}</td>
