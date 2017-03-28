@@ -9,19 +9,21 @@
                 <th>State</th>
                 <th>Zip</th>
                 <th>Talent</th>
+                <th>5 Word Summary</th>
                 <th>Email</th>
                 <!--<th>Claims</th>-->
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="user in controller.users" ui-sref="userHome({id: user.id})">
-                <td><img src="{{user.profileImage}}" / {{user.userName}}</td>
+            <tr ng-repeat="user in controller.users" ui-sref="userProfile({id: user.id})">
+                <td><img src="{{user.profileImage}}" {{user.userName}}/></td>
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
                 <td>{{user.city}}</td>
                 <td>{{user.state}}</td>
                 <td>{{user.zipCode}}</td>
                 <td>{{user.talent}}</td>
+                <td>{{user.sell}}</td>
                 <td>{{user.email}}</td>
                 <!--<td>{{user.claims}}</td>-->
                 <td>

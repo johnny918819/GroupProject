@@ -116,7 +116,7 @@ namespace GroupProject.Controllers
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(org1);
                         var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = org1.Id, code = code }, protocol: HttpContext.Request.Scheme);
                         await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                            "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                            "Welcome to Let Th@t Bang! Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
                         //await _signInManager.SignInAsync(org1, isPersistent: false);
                         _logger.LogInformation(3, "User created a new account with password.");
                         var userViewModel = await GetUser(org1.UserName);
@@ -135,7 +135,7 @@ namespace GroupProject.Controllers
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user1);
                         var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user1.Id, code = code }, protocol: HttpContext.Request.Scheme);
                         await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                            "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                            "Welcome to Let Th@t Bang! Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
                         //await _signInManager.SignInAsync(user1, isPersistent: false);
                         _logger.LogInformation(3, "User created a new account with password.");
                         var userViewModel = await GetUser(user1.UserName);

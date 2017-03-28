@@ -58,6 +58,7 @@ namespace GroupProject
             // Our services.
             services.AddScoped<IGenericRepository, GenericRepository>();
             services.AddScoped<IUserServices, UserServices>();
+            services.AddScoped<IPostService, PostService>();
 
             
                         // add security policies

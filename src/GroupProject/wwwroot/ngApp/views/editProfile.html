@@ -17,39 +17,36 @@
                                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="./ORqmj" style="margin-right:-8px; margin-top:-5px;">
-                                    <img alt="Brand" src="/images/defaultUser.png" width="30px" height="30px">
+                                <a class="navbar-brand" href="/about" style="margin-right:-8px; margin-top:-5px;">
+                                    <img alt="Brand" src="/images/defaultUser.png" width="30" height="30">
                                 </a>
-                                <a class="navbar-brand" href="./ORqmj">Let That Bang!*</a>
-                                <i class="brand_network"><small><small>gjc* Network</small></small></i>
+                                <a class="navbar-brand" href="/about">*Let Th@t Bang!*</a>
+                                <i class="brand_network"><small><small>gjc Network</small></small></i>
                             </div>
                             <div class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="./ORqmj">Stream</a></li>
-                                    <li><a href="#">My Activity</a></li>
-                                    <li><span class="badge badge-important">2</span><a href="#"><i class="fa fa-bell-o fa-lg" aria-hidden="true"></i></a></li>
+                                    <li><a href="/ngApp/views/userHome.html">Home</a></li>
+                                    <li><a href="/rating">My Rating</a></li>
+                                    <li><span class="badge badge-important">2</span><a href="#"><i class="fa fa-bell-o fa-lg" aria-hidden="false"></i></a></li>
                                     <li><a href="#"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i></a></li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <li uib-dropdown class="dropdown" role="menu">
+                                        <a href="#" uib-dropdown-toggle class="profile-image dropdown-toggle">
                                             <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
-                                                <img src="{{controller.user.profileImage}}" class="img-responsive img-circle" title="profile" alt="profile" width="30px" height="30px">
+                                                <img src="{{controller.user.profileImage}}" class="img-responsive img-circle" title="profile" alt="profile" width="30" height="30">
                                             </span>
                                             <span class="user-name">
                                                 {{controller.user.userName}}
                                             </span>
                                             <b class="caret"></b>
                                         </a>
-                                        <ul class="dropdown-menu">
-                                            <li>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li role="menuitem">
                                                 <div class="navbar-content">
                                                     <div class="row">
                                                         <div class="col-md-5">
-                                                            <img src="{{controller.profileImage}}" alt="Alternate Text" class="img-responsive" width="120px" height="120px" />
-                                                            <p class="text-center small">
-                                                                <a href="./3X6zm">Change Avatar</a>
-                                                            </p>
+                                                            <img src="{{controller.user.profileImage}}" alt="Alternate Text" class="img-responsive" width="120" height="120" />
                                                         </div>
                                                         <div class="col-md-7">
                                                             <span>{{controller.user.userName}}</span>
@@ -128,7 +125,7 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <h3 class="panel-title pull-left">What else should we know? Sell Yourself in 5 words.</h3>
+                        <h3 class="panel-title pull-left" ng-model="controller.user.sell" >5 Impact Words about you! Sell Yourself in 5 words!</h3>
                         <br><br>
                         <form class="form-horizontal">
                             <input type="text" class="form-control" id="keywords" placeholder="Like #lyricist #beautifulmusic #jammer #bangingproductions">
@@ -141,7 +138,7 @@
                         <br><br>
                         <div align="center">
                             <div class="col-lg-12 col-md-12">
-                                <img class="img-thumbnail img-responsive" src="{{controller.user.profileImage}}" width="300px" height="300px">
+                                <img class="img-thumbnail img-responsive" src="{{controller.user.profileImage}}" width="300" height="300">
                             </div>
                             <div class="col-lg-12 col-md-12">
                                 <button class="btn btn-primary" ng-click="controller.pickFile()"><i class="fa fa-upload" aria-hidden="true"></i> Change Avatar!</button>
@@ -153,24 +150,24 @@
                     <div class="panel-body">
                         <h3 class="panel-title pull-left">My extended profile</h3>
                         <br><br>
-                        <p>Visibility of your extended profile:</p>
+                        <!--<p>Visibility of your extended profile:</p>
                         ...
-                        <br><br>
+                        <br><br>-->
                         <form class="form-horizontal">
-                            <label>Your bio, this is your chance to boast about your creative experience and accomplishments!</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <label>Your artist bio, this is your chance to boast about your creative training, experience and accomplishments! Additional talents we need to know about? Instruments you play? Vocal range?</label>
+                            <textarea ng-model="controller.user.bio" class="form-control" rows="5"></textarea>
                         </form>
                         <br><br>
                         <form class="form-horizontal">
-                            <label for="Your_talents">Talents we need to know about? Instruments you play? Vocal range?</label>
+                            <!--<label for="Your_talents">Additional talents we need to know about? Instruments you play? Vocal range?</label>
                             <input type="text" class="form-control" id="Your_location" placeholder="Fill me out">
                             <br>
-                            <label for="extras">Anything else?</label>
+                            <label for="extras">Aspirations - Career or Hobby?</label>
                             <input type="text" class="form-control" id="Your_gender" placeholder="Fill me out">
-                            <br>
-                            <label>Your Birthday</label>
+                            <br>-->
+                            <label>Your Birthday mm/dd</label>
                             <div class="form-inline" id="birth-date">
-                                <select id="profile_date_year" name="profile[date][year]" class="form-control">
+                                <!--<select id="profile_date_year" name="profile[date][year]" class="form-control">
                                     <option value="" selected="selected">Year</option>
                                     <option value="2021">2021</option>
                                     <option value="2020">2020</option>
@@ -285,23 +282,23 @@
                                     <option value="1911">1911</option>
                                     <option value="1910">1910</option>
                                     <option value="1909">1909</option>
-                                </select>
-                                <select id="profile_date_month" name="profile[date][month]" class="form-control">
+                                </select>-->
+                                <select ng-model="controller.user.birthMonth" id="profile_date_month" name="profile[date][month]" class="form-control">
                                     <option value="" selected="selected">Month</option>
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
+                                    <option value="January">January</option>
+                                    <option value="February">February</option>
+                                    <option value="March">March</option>
+                                    <option value="April">April</option>
+                                    <option value="May">May</option>
+                                    <option value="June">June</option>
+                                    <option value="July">July</option>
+                                    <option value="August">August</option>
+                                    <option value="September">September</option>
+                                    <option value="October">October</option>
+                                    <option value="November">November</option>
+                                    <option value="December">December</option>
                                 </select>
-                                <select id="profile_date_day" name="profile[date][day]" class="form-control">
+                                <select ng-model="controller.user.birthDay" id="profile_date_day" name="profile[date][day]" class="form-control">
                                     <option value="" selected="selected">Day</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -339,7 +336,7 @@
                         </form>
                     </div>
                 </div>
-                <hr>
+                <!--<hr>
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h3 class="panel-title pull-left">Profile settings</h3>
@@ -359,12 +356,12 @@
                                 <input type="checkbox" name="profile[nsfw]" id="profile_nsfw" value="true">
                                 Mark everything I share as NSFW
                             </label>
-                        </div>
+                        </div>-->
                         <p class="text-danger"><strong><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> If you choose not to select this option, please add the #nsfw tag each time you share such material.</strong></p>
                         <button class="btn btn-default"><i class="fa fa-fw fa-times" aria-hidden="true"></i> Cancel</button>
                         <button class="btn btn-primary" ng-click="controller.saveProfile()"><i class="fa fa-fw fa-check" aria-hidden="true"></i> Update Profile</button>
-                    </div>
-                </div>
+                    <!--</div>
+                </div>-->
             </div>
         </div>
     </div>

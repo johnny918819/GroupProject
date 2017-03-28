@@ -8,9 +8,10 @@ using GroupProject.Data;
 namespace GroupProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170327191010_post1")]
+    partial class post1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -67,8 +68,6 @@ namespace GroupProject.Data.Migrations
                     b.Property<string>("ProfileImage");
 
                     b.Property<string>("SecurityStamp");
-
-                    b.Property<string>("Sell");
 
                     b.Property<string>("State");
 

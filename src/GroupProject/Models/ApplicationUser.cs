@@ -17,9 +17,12 @@ namespace GroupProject.Models
         public int ZipCode { get; set; }
         public string Country { get; set; }
         public string Talent { get; set; }
-
-        //profile image prop    
         public string ProfileImage { get; set; }
+        public string BirthMonth { get; set; }
+        public int BirthDay { get; set; }
+        public bool IsOnline { get; set; }
+        public string Bio { get; set; }
+        public string Sell { get; set; }
         public string LookingFor { get; set; }
         public string StatusMessage { get; set; }
 

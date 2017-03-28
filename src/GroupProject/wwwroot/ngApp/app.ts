@@ -32,15 +32,15 @@ namespace GroupProject {
                 controllerAs: 'controller'
             })
             .state(`userHome`, {
-                url: `/userHome/:id`,
+                url: `/userHome`,
                 templateUrl: `/ngApp/views/userHome.html`,
                 controller: GroupProject.Controllers.UserHomeController,
                 controllerAs: `controller`
             })
-            .state(`orgHome`, {
-                url: `/orgHome`,
-                templateUrl: `/ngApp/views/orgHome.html`,
-                controller: GroupProject.Controllers.OrgHomeController,
+            .state(`userProfile`, {
+                url: `/userProfile/:id`,
+                templateUrl: `/ngApp/views/userProfile.html`,
+                controller: GroupProject.Controllers.UserProfileController,
                 controllerAs: `controller`
             })
             .state(`editProfile`, {
@@ -87,6 +87,18 @@ namespace GroupProject {
                 controller: GroupProject.Controllers.ExternalRegisterController,
                 controllerAs: 'controller'
             }) 
+            .state(`createPost`, {
+                url: `/createPost`,
+                templateUrl: `/ngApp/views/createPost.html`,
+                controller: GroupProject.Controllers.PostCreateController,
+                controllerAs: `controller`
+            })
+            .state(`updates`, {
+                url: `/updates`,
+                templateUrl: `/ngApp/views/updates.html`,
+                controller: GroupProject.Controllers.PostController,
+                controllerAs: `controller`
+            })
             .state('about', {
                 url: '/about',
                 templateUrl: '/ngApp/views/about.html',

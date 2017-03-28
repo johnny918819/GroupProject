@@ -8,9 +8,10 @@ using GroupProject.Data;
 namespace GroupProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170327190735_post")]
+    partial class post
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -68,8 +69,6 @@ namespace GroupProject.Data.Migrations
 
                     b.Property<string>("SecurityStamp");
 
-                    b.Property<string>("Sell");
-
                     b.Property<string>("State");
 
                     b.Property<string>("StatusMessage");
@@ -93,24 +92,6 @@ namespace GroupProject.Data.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("GroupProject.Models.Post", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("User");
-
-                    b.Property<string>("UserId");
-
-                    b.Property<string>("comment");
-
-                    b.Property<string>("item");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
