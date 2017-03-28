@@ -11,12 +11,18 @@
                 <th>Talent</th>
                 <th>5 Word Summary</th>
                 <th>Email</th>
+                <th>Average Rating</th>
                 <!--<th>Claims</th>-->
             </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
             <tr ng-repeat="user in controller.users" ui-sref="userProfile({id: user.id})">
                 <td><img src="{{user.profileImage}}" {{user.userName}}/></td>
+=======
+            <tr ng-repeat="user in controller.users">
+                <td ui-sref="userHome({id: user.id})"> <img src="{{user.profileImage}}" /> {{user.userName}} </td>
+>>>>>>> master
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
                 <td>{{user.city}}</td>
@@ -25,6 +31,7 @@
                 <td>{{user.talent}}</td>
                 <td>{{user.sell}}</td>
                 <td>{{user.email}}</td>
+                <td ui-sref="rating({id: user.id})">{{user.averageRating}}</td>
                 <!--<td>{{user.claims}}</td>-->
                 <td>
                     <!--<button class="btn btn-success" ui-sref="editProduct({id: controller.prod.id})">Edit</button>-->

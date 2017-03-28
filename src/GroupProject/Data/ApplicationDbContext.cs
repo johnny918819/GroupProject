@@ -10,7 +10,11 @@ namespace GroupProject.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+<<<<<<< HEAD
         public DbSet<Post> Posts { get; set; }
+=======
+        public DbSet<Rating> Rating { get; set; }
+>>>>>>> master
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
