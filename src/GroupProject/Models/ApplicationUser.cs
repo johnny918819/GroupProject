@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using GroupProject.Data;
+using GroupProject.Services;
 
 namespace GroupProject.Models
 {
@@ -23,7 +24,7 @@ namespace GroupProject.Models
         public string LookingFor { get; set; }
         public string StatusMessage { get; set; }
 
-    }
-    
-    
+        //rating prop
+        public ICollection<Rating> Rating { get; set; }
+    }    
 }

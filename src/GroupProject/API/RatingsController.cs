@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using GroupProject.Services;
 using GroupProject.Models;
-using GroupProject.Data;
+using GroupProject.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,31 +15,71 @@ namespace GroupProject.API
     [Route("api/[controller]")]
     public class RatingsController : Controller
     {
-        private ApplicationDbContext _db;
-        //note: CS controller should now be sending the floating integer rating here in a post, pick up here.
+        private IRatingsService _ratingService;
 
-        //[Get] the total number of ratings for the user being rated
-
-        //[Perform logic] add 1 to the total number of ratings for the user being rated 
-        //[Update] the new total number of ratings for the user being rated
-        //[Get] new total number of ratings
-        //[Get] the current average rating of the user being rated
-        //[Perform logic] add the newly submitted rating to the current rating of the user being rated
-        //[Perform logic] divide this new sum by the new total number of ratings for the user being rated
-        //[Update] the average rating for the user being rated
-        //[Get] the new average rating for the user being rated (for testing only).
-
-        //[HttpPost("{id}")]
-        //public IActionResult Post(ApplicationUser appUser)
-        //{
-        //    _db.Add(float, appUser.rating);
-        //    _db.SaveChanges();
-        //    return Ok();
-        //}
-        public RatingsController(ApplicationDbContext db)
+        public RatingsController(IRatingsService ratingService)
         {
-            _db = db;
+            _ratingService = ratingService;
+        }
+
+        // GET without id
+        //[HttpGet]
+        //public List<Rating> Get()
+        //{
+        //    return _ratingService.GetRatings();
+        //}
+
+        // GET by id
+        [HttpGet("{id}")]
+        public IActionResult Get(string id)
+        {
+            var ratings = _ratingService.GetRatingByUser(id);
+            return Ok(ratings);
+        }
+
+        // GET by id
+        [HttpGet("average/{id}")]
+        public IActionResult GetAverage(string id)
+        {
+            double averageRating = _ratingService.GetMyAverageRating(id);
+            averageRating = Math.Round(averageRating, 2, MidpointRounding.AwayFromZero);
+            return Ok(averageRating);
+        }
+
+        // POST 
+        [HttpPost]
+        public IActionResult Post([FromBody]Rating rating)
+        {
+            //This is the beginning of the conditional logic block
+            if (rating == null)
+            {
+                return BadRequest();
+            }
+            else if (rating.Id == 0)
+            {
+                _ratingService.AddRating(rating);
+                return Ok();
+            }
+            else
+            {
+                _ratingService.UpdateRating(rating);
+                return Ok();
+            }
+            //This is the end of the conditional logic block
+        }
+
+        // PUT
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE
+        [HttpDelete("{id}")]
+        public IActionResult Delete(string id)
+        {
+            _ratingService.DeleteRating(id);
+            return Ok();
         }
     }
 }
-

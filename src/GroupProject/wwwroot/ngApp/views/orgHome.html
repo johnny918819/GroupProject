@@ -1,20 +1,27 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Welcome Organizer {{account.getUserName()}}!</title>
-</head>
-<body>
-    <div>
-        <h3 class="headName">Talent Search</h3>
-        <div class="bar">
-            <input ng-model="controller.search" ng-model-options="{debounce:1000}" ng-change="controller.fetch()" placeholder="Enter talent, city, or zip" />
-        </div>
-        <ul class="data-ctrl" ng-repeat="usr in controller.users | filter: controller.search" ui-sref="userHome({id: user.id})">
-            <li>
-                <p> Handle: {{usr.userName}} / City: {{usr.city}} / Specialty: {{usr.talent}} / Contact: <a href="mailto:{{usr.email}}">{{usr.email}}</a></p>
-            </li>
-        </ul>
+﻿
+<title>Welcome Organizer {{account.getUserName()}}!</title>
+
+<table>
+    <thead>
+        <tr>
+            <th>Ratings</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="rating in controller.ratings">
+            <td>{{rating.ratingActual}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <h3 class="headName">Talent Search</h3>
+    <div class="bar">
+        <input ng-model="controller.search" ng-model-options="{debounce:1000}" ng-change="controller.fetch()" placeholder="Enter talent, city, or zip" />
     </div>
-</body>
-</html>
+    <ul class="data-ctrl" ng-repeat="usr in controller.users | filter: controller.search" ui-sref="userHome({id: user.id})">
+        <li>
+            <p> Handle: {{usr.userName}} / City: {{usr.city}} / Specialty: {{usr.talent}} / Contact: <a href="mailto:{{usr.email}}">{{usr.email}}</a></p>
+        </li>
+    </ul>
+</div>

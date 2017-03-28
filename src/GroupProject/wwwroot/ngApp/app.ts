@@ -64,7 +64,7 @@ namespace GroupProject {
 
             })
             .state('rating', {
-                url: '/rating',
+                url: '/rating/:id',
                 templateUrl: '/ngApp/views/rating.html',
                 controller: GroupProject.Controllers.RatingController,
                 controllerAs: 'controller'

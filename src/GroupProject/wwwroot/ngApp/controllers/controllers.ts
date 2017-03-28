@@ -5,28 +5,38 @@ namespace GroupProject.Controllers {
     }
 
     export class RatingController {
-        public input;
         public rating;
-
-        public getIntRating() {
-            this.rating = parseFloat(this.input);
-            return this.rating;
-        }
-
+        public avgRating;
+        public userName = this.accountService.getUserName();
+        public UserBeingRated;
+        
         public addRating() {
-            this.getIntRating();
-            this.$http.post(`/api/ratings`, this.rating).then((response) => {
-                this.$state.go(`about`);
+            this.rating.RatedBy = this.userName;
+            this.rating.UserBeingRated = this.UserBeingRated;
+            this.$http.post(`/api/ratings/`, this.rating).then((response) => {
+                this.$state.reload();// replace this with go(`userHome`) later;
             });
         }
 
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
-
+        constructor(private accountService: GroupProject.Services.AccountService, private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService) {
+            this.UserBeingRated = this.$stateParams[`id`];
+            this.$http.get(`/api/ratings/average/` + this.UserBeingRated).then((response) => {
+                this.avgRating = response.data;
+            });
+            }
         }
-    }
 
     export class AllUsersController {
         public users;
+        public user;
+        public averageRating;
+
+        public getAverageForUserList(user) {
+            this.user = this.$stateParams[`id`];
+            this.RatingService.getAverageRating(user).then((response) => {
+                this.averageRating = response.data
+            });
+        }
 
 
         public deleteUser(id: string) {
@@ -34,7 +44,8 @@ namespace GroupProject.Controllers {
                 this.$state.reload();
             });
         }
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+        constructor(private RatingService: GroupProject.Services.RatingService, private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService) {
+            this.getAverageForUserList(this.user);
             this.$http.get("/api/users").then((response) => {
                 this.users = response.data;
 
@@ -172,8 +183,17 @@ namespace GroupProject.Controllers {
     angular.module(`GroupProject`).controller(`UserHomeController`, UserHomeController);
 
     export class OrgHomeController {
+        public ratings;
         public users;
         public search;
+
+        public userId = this.accountService.getUserName();
+        //gets all ratings associated with a specific username
+        public getRatings() {
+            this.$http.get(`/api/ratings/` + this.userId).then((response) => {
+                this.ratings = response.data;
+            });
+        }
 
         fetch() {
             if (this.search) {
@@ -186,7 +206,9 @@ namespace GroupProject.Controllers {
                     });
             }
         }
-        constructor(private $http: ng.IHttpService) { };
+        constructor(private accountService: GroupProject.Services.AccountService, private $http: ng.IHttpService) {
+            this.getRatings();
+        };
     }
 
     export class SecretController {
