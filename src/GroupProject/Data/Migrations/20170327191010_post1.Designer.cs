@@ -5,12 +5,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using GroupProject.Data;
 
-namespace GroupProject.Migrations
+namespace GroupProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170327191010_post1")]
+    partial class post1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -68,8 +69,6 @@ namespace GroupProject.Migrations
 
                     b.Property<string>("SecurityStamp");
 
-                    b.Property<string>("Sell");
-
                     b.Property<string>("State");
 
                     b.Property<string>("StatusMessage");
@@ -95,16 +94,11 @@ namespace GroupProject.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-<<<<<<< HEAD:src/GroupProject/Data/Migrations/ApplicationDbContextModelSnapshot.cs
             modelBuilder.Entity("GroupProject.Models.Post", b =>
-=======
-            modelBuilder.Entity("GroupProject.Models.Rating", b =>
->>>>>>> master:src/GroupProject/Migrations/ApplicationDbContextModelSnapshot.cs
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-<<<<<<< HEAD:src/GroupProject/Data/Migrations/ApplicationDbContextModelSnapshot.cs
                     b.Property<string>("User");
 
                     b.Property<string>("UserId");
@@ -116,23 +110,6 @@ namespace GroupProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Posts");
-=======
-                    b.Property<string>("RatedBy");
-
-                    b.Property<float>("RatingActual");
-
-                    b.Property<DateTime>("TimeStamp");
-
-                    b.Property<string>("UserBeingRated");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Rating");
->>>>>>> master:src/GroupProject/Migrations/ApplicationDbContextModelSnapshot.cs
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -240,13 +217,6 @@ namespace GroupProject.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("GroupProject.Models.Rating", b =>
-                {
-                    b.HasOne("GroupProject.Models.ApplicationUser", "User")
-                        .WithMany("Rating")
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

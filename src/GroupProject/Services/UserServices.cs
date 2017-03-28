@@ -35,6 +35,10 @@ namespace GroupProject.Services
                                                ZipCode = u.ZipCode,
                                                Talent = u.Talent,
                                                Email = u.Email,
+                                               BirthDay = u.BirthDay,
+                                               BirthMonth = u.BirthMonth,
+                                               Bio = u.Bio,
+                                               Sell = u.Sell,
                                                StatusMessage = u.StatusMessage,
                                                //Claims = u.Claims
                                            }).ToList();
@@ -58,6 +62,10 @@ namespace GroupProject.Services
                                         Country = u.Country,
                                         Talent = u.Talent,
                                         Email = u.Email,
+                                        BirthDay = u.BirthDay,
+                                        BirthMonth = u.BirthMonth,
+                                        Bio = u.Bio,
+                                        Sell = u.Sell,
                                         StatusMessage = u.StatusMessage,
                                         LookingFor = u.LookingFor,
                                         //Claims = u.Claims,
@@ -86,6 +94,10 @@ namespace GroupProject.Services
             data.ZipCode = user.ZipCode;
             data.Country = user.Country;
             data.Talent = user.Talent;
+            data.BirthDay = user.BirthDay;
+            data.BirthMonth = user.BirthMonth;
+            data.Bio = user.Bio;
+            data.Sell = user.Sell;
             data.Email = user.Email;
 
             _repo.SaveChanges();
