@@ -31,8 +31,8 @@ namespace GroupProject.ViewModels.Account
         [Display(Name = "Talent")]
         public string Talent { get; set; }
 
-        [Display(Name = "Avatar")]
-        public string ProfileImage { get; set; }
+        //[Display(Name = "Avatar")]
+        //public string ProfileImage { get; set; }
 
         [Required]
         [Display(Name = "UserName")]

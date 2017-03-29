@@ -15,12 +15,16 @@ namespace GroupProject.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
+                    Bio = table.Column<string>(nullable: true),
+                    BirthDay = table.Column<int>(nullable: false),
+                    BirthMonth = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
+                    IsOnline = table.Column<bool>(nullable: false),
                     LastName = table.Column<string>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
@@ -32,6 +36,7 @@ namespace GroupProject.Migrations
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
                     ProfileImage = table.Column<string>(nullable: true),
                     SecurityStamp = table.Column<string>(nullable: true),
+                    Sell = table.Column<string>(nullable: true),
                     State = table.Column<string>(nullable: true),
                     StatusMessage = table.Column<string>(nullable: true),
                     Talent = table.Column<string>(nullable: true),
@@ -45,18 +50,19 @@ namespace GroupProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Rating",
+                name: "Posts",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    RatedBy = table.Column<string>(nullable: true),
-                    RatingActual = table.Column<float>(nullable: false),
-                    TimeStamp = table.Column<DateTime>(nullable: false)
+                    User = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true),
+                    comment = table.Column<string>(nullable: true),
+                    item = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rating", x => x.Id);
+                    table.PrimaryKey("PK_Posts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -85,6 +91,29 @@ namespace GroupProject.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Rating",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RatedBy = table.Column<string>(nullable: true),
+                    RatingActual = table.Column<float>(nullable: false),
+                    TimeStamp = table.Column<DateTime>(nullable: false),
+                    UserBeingRated = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rating", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Rating_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -185,6 +214,11 @@ namespace GroupProject.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Rating_UserId",
+                table: "Rating",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName");
@@ -217,6 +251,9 @@ namespace GroupProject.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Posts");
+
             migrationBuilder.DropTable(
                 name: "Rating");
 

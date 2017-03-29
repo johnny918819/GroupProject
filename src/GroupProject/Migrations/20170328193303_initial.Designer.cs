@@ -8,8 +8,8 @@ using GroupProject.Data;
 namespace GroupProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170324211505_initial3")]
-    partial class initial3
+    [Migration("20170328193303_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,6 +22,12 @@ namespace GroupProject.Migrations
                     b.Property<string>("Id");
 
                     b.Property<int>("AccessFailedCount");
+
+                    b.Property<string>("Bio");
+
+                    b.Property<int>("BirthDay");
+
+                    b.Property<string>("BirthMonth");
 
                     b.Property<string>("City");
 
@@ -36,6 +42,8 @@ namespace GroupProject.Migrations
                     b.Property<bool>("EmailConfirmed");
 
                     b.Property<string>("FirstName");
+
+                    b.Property<bool>("IsOnline");
 
                     b.Property<string>("LastName");
 
@@ -61,6 +69,8 @@ namespace GroupProject.Migrations
 
                     b.Property<string>("SecurityStamp");
 
+                    b.Property<string>("Sell");
+
                     b.Property<string>("State");
 
                     b.Property<string>("StatusMessage");
@@ -84,6 +94,24 @@ namespace GroupProject.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("GroupProject.Models.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("User");
+
+                    b.Property<string>("UserId");
+
+                    b.Property<string>("comment");
+
+                    b.Property<string>("item");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("GroupProject.Models.Rating", b =>

@@ -37,7 +37,7 @@ namespace GroupProject.API
             return Ok(ratings);
         }
 
-        // GET by id
+        // GET by average/id
         [HttpGet("average/{id}")]
         public IActionResult GetAverage(string id)
         {
