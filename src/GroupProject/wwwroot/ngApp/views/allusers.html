@@ -17,7 +17,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="user in controller.users">
-                <td ui-sref="userProfile({id: user.id})"> <img src="{{user.profileImage}}" /> {{user.userName}} </td>
+                <td ui-sref="userProfile({id: user.id})" class="ui-state-hover"> <img src="{{user.profileImage}}" /> {{user.userName}} </td>
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
                 <td>{{user.city}}</td>

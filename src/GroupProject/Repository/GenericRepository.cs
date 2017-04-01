@@ -43,12 +43,10 @@ public class GenericRepository : IGenericRepository
         return _db.Set<T>().FromSql(sql, parameters);
     }
 
-
     public void SaveChanges()
     {
         _db.SaveChanges();
     }
-
 
     public void Dispose()
     {

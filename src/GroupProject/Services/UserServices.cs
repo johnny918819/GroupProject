@@ -40,6 +40,7 @@ namespace GroupProject.Services
                                                Bio = u.Bio,
                                                Sell = u.Sell,
                                                StatusMessage = u.StatusMessage,
+                                               AverageRating = u.AverageRating,
                                                //Claims = u.Claims
                                            }).ToList();
             return users;
@@ -48,7 +49,7 @@ namespace GroupProject.Services
         public ApplicationUser GetUser(string id)
         {
             ApplicationUser user = (from u in _repo.Query<ApplicationUser>()
-                                    where u.UserName == id
+                                    where u.Id == id
                                     select new ApplicationUser
                                     {
                                         Id = u.Id,
@@ -68,12 +69,12 @@ namespace GroupProject.Services
                                         Sell = u.Sell,
                                         StatusMessage = u.StatusMessage,
                                         LookingFor = u.LookingFor,
+                                        AverageRating = u.AverageRating,
                                         //Claims = u.Claims,
                                         ConcurrencyStamp = u.ConcurrencyStamp
                                     }).FirstOrDefault();
             return user;
         }
-
 
         public void DeleteUser(string id)
         {
@@ -102,6 +103,7 @@ namespace GroupProject.Services
 
             _repo.SaveChanges();
         }
+
     }
 
 }

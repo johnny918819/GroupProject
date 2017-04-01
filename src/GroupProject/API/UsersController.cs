@@ -31,11 +31,17 @@ namespace GroupProject.API
         }
 
         // GET api/values/5
+        [HttpGet("profile/{id}")]
+        public ApplicationUser GetProfileId(string id)
+        {
+            return _usrService.GetUser(id);
+        }
+
+        // GET api/values/5
         [HttpGet("{id}")]
         public ApplicationUser Get(string id)
         {
-            return _usrService.GetUser(User.Identity.Name
-                );
+            return _usrService.GetUser(User.Identity.Name);
         }
 
         // POST api/values

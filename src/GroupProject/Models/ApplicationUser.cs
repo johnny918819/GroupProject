@@ -29,5 +29,6 @@ namespace GroupProject.Models
 
         //rating prop
         public ICollection<Rating> Rating { get; set; }
+        public float AverageRating { get; set; }
     }    
 }
