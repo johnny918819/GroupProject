@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace GroupProject.Migrations
 {
-    public partial class gfirst : Migration
+    public partial class newvs : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,6 +15,7 @@ namespace GroupProject.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
+                    AverageRating = table.Column<float>(nullable: false),
                     Bio = table.Column<string>(nullable: true),
                     BirthDay = table.Column<int>(nullable: false),
                     BirthMonth = table.Column<string>(nullable: true),

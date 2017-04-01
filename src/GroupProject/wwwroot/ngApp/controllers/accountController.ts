@@ -59,7 +59,7 @@ namespace GroupProject.Controllers {
 
         public register() {
             this.accountService.register(this.registerUser).then(() => {
-                this.$location.path('/editProfile');
+                this.$location.path('/home');
             }).catch((results) => {
                 this.validationMessages = results;
             });
