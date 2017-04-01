@@ -8,8 +8,8 @@ using GroupProject.Data;
 namespace GroupProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170331174305_intial5")]
-    partial class intial5
+    [Migration("20170401190644_newvs")]
+    partial class newvs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
