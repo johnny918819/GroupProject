@@ -8,9 +8,10 @@ using GroupProject.Data;
 namespace GroupProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170329181224_intial2")]
+    partial class intial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -22,7 +23,7 @@ namespace GroupProject.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<float>("AverageRating");
+                    b.Property<double>("AverageRating");
 
                     b.Property<string>("Bio");
 

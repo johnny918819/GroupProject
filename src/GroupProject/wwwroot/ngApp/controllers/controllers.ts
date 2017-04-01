@@ -14,10 +14,12 @@ namespace GroupProject.Controllers {
             this.rating.RatedBy = this.userName;
             this.rating.UserBeingRated = this.UserBeingRated;
             this.$http.post(`/api/ratings/`, this.rating).then((response) => {
-                this.$state.reload();// replace this with go(`userHome`) later;
+                this.$http.put(`/api/ratings/` + this.UserBeingRated, this.avgRating).then((response) => {
+                    this.$state.go(`userHome`);
+                });
             });
         }
-
+                        
         constructor(private accountService: GroupProject.Services.AccountService, private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService) {
             this.UserBeingRated = this.$stateParams[`id`];
             this.$http.get(`/api/ratings/average/` + this.UserBeingRated).then((response) => {
@@ -28,16 +30,6 @@ namespace GroupProject.Controllers {
 
     export class AllUsersController {
         public users;
-        public user;
-        public averageRating;
-
-        public getAverageForUserList(user) {
-            this.user = this.$stateParams[`id`];
-            this.RatingService.getAverageRating(user).then((response) => {
-                this.averageRating = response.data
-            });
-        }
-
 
         public deleteUser(id: string) {
             this.$http.delete(`/api/users/` + id).then((response) => {
@@ -45,7 +37,6 @@ namespace GroupProject.Controllers {
             });
         }
         constructor(private RatingService: GroupProject.Services.RatingService, private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService) {
-            this.getAverageForUserList(this.user);
             this.$http.get("/api/users").then((response) => {
                 this.users = response.data;
 
@@ -141,7 +132,6 @@ namespace GroupProject.Controllers {
             
         }
 
-
         public pickFile() {
             this.filepickerService.pick(
                 {
@@ -184,9 +174,11 @@ namespace GroupProject.Controllers {
 
     export class UserProfileController {
         public user;
+        public userProfileId;
 
         constructor(private $stateParams: ng.ui.IStateParamsService, private $http: ng.IHttpService) {
-            this.$http.get(`/api/users/` + this.$stateParams["id"]).then((response) => {
+            this.userProfileId = this.$stateParams[`id`];
+            this.$http.get(`/api/users/profile/` + this.userProfileId).then((response) => {
                 this.user = response.data;
             });
             //console.log(response.data);
@@ -207,6 +199,7 @@ namespace GroupProject.Controllers {
     export class AboutController {
         public message = 'Hello from the about page!';
     }
+
     export class PostController {
 
         public posts;

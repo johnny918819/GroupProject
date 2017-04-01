@@ -22,13 +22,6 @@ namespace GroupProject.API
             _ratingService = ratingService;
         }
 
-        // GET without id
-        //[HttpGet]
-        //public List<Rating> Get()
-        //{
-        //    return _ratingService.GetRatings();
-        //}
-
         // GET by id
         [HttpGet("{id}")]
         public IActionResult Get(string id)
@@ -70,8 +63,11 @@ namespace GroupProject.API
 
         // PUT
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult Put(string id, [FromBody]float average)
         {
+            average = _ratingService.GetMyAverageRating(id);
+            _ratingService.UpdateAverageRating(id, average);
+            return Ok();
         }
 
         // DELETE

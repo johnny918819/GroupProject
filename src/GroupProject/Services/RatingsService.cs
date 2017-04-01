@@ -11,6 +11,8 @@ namespace GroupProject.Services
 
     public class RatingsService : IRatingsService
     {
+        public float average;
+
         public IGenericRepository _repo;
 
         public RatingsService(IGenericRepository repo)
@@ -35,12 +37,19 @@ namespace GroupProject.Services
             float sumOfRatings = 0;
             var listOfRatings = GetRatingForAvg(id);
             var totalNumberOfRatings = listOfRatings.Count;
-            for(int i = 0; i < totalNumberOfRatings; i++)
+            for (int i = 0; i < totalNumberOfRatings; i++)
             {
                 sumOfRatings += listOfRatings[i];
             }
-            var average = sumOfRatings / totalNumberOfRatings;
-            return average;
+            this.average = sumOfRatings / totalNumberOfRatings;
+            return this.average;
+        }
+
+        public void UpdateAverageRating(string userId, float average)
+        {
+            var user = _repo.Query<ApplicationUser>().Where(u => u.Id == userId).FirstOrDefault();
+            user.AverageRating = average;
+            _repo.SaveChanges();
         }
 
         public ApplicationUser GetMyRatings(string id)
@@ -56,7 +65,6 @@ namespace GroupProject.Services
 
         public void AddRating(Rating rating)
         {
-
             var user = _repo.Query<ApplicationUser>().Where(u => u.Id == rating.UserBeingRated).FirstOrDefault();
             rating.TimeStamp = DateTime.Now;
             rating.User = user;
