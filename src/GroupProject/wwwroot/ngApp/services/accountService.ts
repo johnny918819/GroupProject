@@ -9,6 +9,7 @@ namespace GroupProject.Services {
 
             // store claims
             this.$window.sessionStorage.setItem('claims', JSON.stringify(userInfo.claims));
+            this.$window.sessionStorage.setItem('location', userInfo.location);
         }
 
         public getUserName() {

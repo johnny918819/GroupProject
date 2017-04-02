@@ -176,6 +176,11 @@ namespace GroupProject.Controllers {
         public user;
         public userProfileId;
 
+        public goBack() {
+            window.history.back();
+            console.log("back one page?");
+        }
+
         constructor(private $stateParams: ng.ui.IStateParamsService, private $http: ng.IHttpService) {
             this.userProfileId = this.$stateParams[`id`];
             this.$http.get(`/api/users/profile/` + this.userProfileId).then((response) => {
