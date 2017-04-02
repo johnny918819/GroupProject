@@ -1,6 +1,6 @@
 namespace GroupProject {
 
-    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap','uiGmapgoogle-maps', `angular-filepicker`]).config((
+    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap', 'uiGmapgoogle-maps', `angular-filepicker`, 'ui.calendar']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider,
@@ -59,7 +59,7 @@ namespace GroupProject {
             .state('calendar', {
                 url: '/calendar',
                 templateUrl: '/ngApp/views/calendar.html',
-                controller: GroupProject.Controllers.CalendarController,
+                controller: GroupProject.Controllers.EventsController,
                 controllerAs: 'controller'
 
             })
