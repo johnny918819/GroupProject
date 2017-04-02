@@ -24,25 +24,25 @@ namespace GroupProject.Controllers {
             return this.accountService.getExternalLogins();
         }
         //Launch Login Modal
-        public loginModal() {
-            this.$uibModal.open({
-                templateUrl: 'ngApp/views/modals/modalLogin.html',
-                controller: LoginController,
-                controllerAs: 'modal',
-            });
-        }
+        //public loginModal() {
+        //    this.$uibModal.open({
+        //        templateUrl: 'ngApp/views/modals/modalLogin.html',
+        //        controller: LoginController,
+        //        controllerAs: 'modal',
+        //    });
+        //}
 
         //Launch Status Modal
-        public statusModal() {
-            this.$uibModal.open({
-                templateUrl: 'ngApp/views/modals/modalStatus.html',
-                controller: StatusController,
-                controllerAs: 'modal',
-                size: "sm"
-            });
-        }
+        //public statusModal() {
+        //    this.$uibModal.open({
+        //        templateUrl: 'ngApp/views/modals/modalStatus.html',
+        //        controller: StatusController,
+        //        controllerAs: 'modal',
+        //        size: "sm"
+        //    });
+        //}
 
-        constructor(private accountService: GroupProject.Services.AccountService, private $location: ng.ILocationService, private $uibModal: ng.ui.bootstrap.IModalService, private $scope: ng.IScope, private $state: ng.ui.IStateService) {
+        constructor(private accountService: GroupProject.Services.AccountService, private $location: ng.ILocationService, private $scope: ng.IScope, private $state: ng.ui.IStateService) {
             this.getExternalLogins().then((results) => {
                 this.externalLogins = results;
             });
@@ -62,36 +62,36 @@ namespace GroupProject.Controllers {
                     this.$location.path(`/userHome`)
                 }else
                     this.$location.path('/userHome');
-                this.$uibModalInstance.close();
+                
             }).catch((results) => {
                 this.validationMessages = results;
             });
         }
 
-        constructor(private accountService: GroupProject.Services.AccountService, private $location: ng.ILocationService, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, private $state: ng.ui.IStateService, private $scope: angular.IScope) { }
+        constructor(private accountService: GroupProject.Services.AccountService, private $location: ng.ILocationService, private $state: ng.ui.IStateService, private $scope: angular.IScope) { }
     }
-    export class StatusController {
-        public statusMessage;
-        public lookingFor;
-        public info;
-        public ok() {
+    //export class StatusController {
+    //    public statusMessage;
+    //    public lookingFor;
+    //    public info;
+    //    public ok() {
 
-            this.statusService.saveStatus({ lookingFor: this.lookingFor, statusMessage: this.statusMessage }).then(() => {
-                this.$uibModalInstance.close();
-            }).catch((results) => {
-                console.log("Save status Failed");
-            });
-        }
+    //        this.statusService.saveStatus({ lookingFor: this.lookingFor, statusMessage: this.statusMessage }).then(() => {
+    //            this.$uibModalInstance.close();
+    //        }).catch((results) => {
+    //            console.log("Save status Failed");
+    //        });
+    //    }
 
-        constructor(private accountService: GroupProject.Services.AccountService, private userHomeService: GroupProject.Services.UserHomeService, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, private $scope: ng.IScope, private statusService: GroupProject.Services.StatusService) {
-            userHomeService.getUserById(accountService.getUserName()).then((data) => {
-                this.info = data;
-                this.statusMessage = this.info.statusMessage;
-                this.lookingFor = this.info.lookingFor;
-            });
+    //    constructor(private accountService: GroupProject.Services.AccountService, private userHomeService: GroupProject.Services.UserHomeService, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, private $scope: ng.IScope, private statusService: GroupProject.Services.StatusService) {
+    //        userHomeService.getUserById(accountService.getUserName()).then((data) => {
+    //            this.info = data;
+    //            this.statusMessage = this.info.statusMessage;
+    //            this.lookingFor = this.info.lookingFor;
+    //        });
 
-        }
-    }
+    //    }
+    //}
 
 
     export class RegisterController {
