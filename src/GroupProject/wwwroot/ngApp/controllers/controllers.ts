@@ -176,6 +176,11 @@ namespace GroupProject.Controllers {
         public user;
         public userProfileId;
 
+        public goBack() {
+            window.history.back();
+            console.log("back one page?");
+        }
+
         constructor(private $stateParams: ng.ui.IStateParamsService, private $http: ng.IHttpService) {
             this.userProfileId = this.$stateParams[`id`];
             this.$http.get(`/api/users/profile/` + this.userProfileId).then((response) => {
@@ -206,7 +211,7 @@ namespace GroupProject.Controllers {
         private postId;
 
         constructor(private PostService: GroupProject.Services.PostService,
-            private $uibModal: angular.ui.bootstrap.IModalService,
+            //private $uibModal: angular.ui.bootstrap.IModalService,
             private accountService: GroupProject.Services.AccountService,
             private $stateParams: angular.ui.IStateParamsService) {
             this.getPosts();
@@ -231,35 +236,35 @@ namespace GroupProject.Controllers {
         }
 
         //controller for delete posts modal
-        showModalDelPost(postId) {
-            this.$uibModal.open({
+        //showModalDelPost(postId) {
+        //    this.$uibModal.open({
 
-                templateUrl: '/ngapp/views/postDelete.html',
-                controller: 'DialogController',
-                controllerAs: 'controller',
-                resolve: {
-                    postId: () => postId,
-                },
-                size: 'lg'
-            }).closed.then(() => {
-                this.getPosts();
-            });
-        }
+        //        templateUrl: '/ngapp/views/postDelete.html',
+        //        controller: 'DialogController',
+        //        controllerAs: 'controller',
+        //        resolve: {
+        //            postId: () => postId,
+        //        },
+        //        size: 'lg'
+        //    }).closed.then(() => {
+        //        this.getPosts();
+        //    });
+        //}
 
-        //controller for edit
-        showModalEditPost(postId) {
-            this.$uibModal.open({
-                templateUrl: '/ngapp/views/postEdit.html',
-                controller: 'EditDialogController',
-                controllerAs: 'controller',
-                resolve: {
-                    postId: () => postId,
-                },
-                size: 'lg'
-            }).closed.then(() => {
-                this.getPosts();
-            });
-        }
+        ////controller for edit
+        //showModalEditPost(postId) {
+        //    this.$uibModal.open({
+        //        templateUrl: '/ngapp/views/postEdit.html',
+        //        controller: 'EditDialogController',
+        //        controllerAs: 'controller',
+        //        resolve: {
+        //            postId: () => postId,
+        //        },
+        //        size: 'lg'
+        //    }).closed.then(() => {
+        //        this.getPosts();
+        //    });
+        //}
     }
 
     class DialogController {

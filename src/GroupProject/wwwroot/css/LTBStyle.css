@@ -81,6 +81,14 @@ overflow: hidden;
 
 body {
     background-color: #e8e8e8;
+    background:url(/images/music-energy.png) no-repeat center fixed;
+    background-size: cover;
+}
+thead {
+    background-color: #E8E8E8;
+}
+tbody {
+    background-color: #E8E8E8;
 }
 /*about page*/
 /* generic  */
