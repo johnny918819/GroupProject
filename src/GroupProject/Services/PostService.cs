@@ -32,6 +32,12 @@ namespace GroupProject.Services
             var data = _repo.Query<Post>().Where(p => p.Id == id).FirstOrDefault();
             return data;
         }
+        // get post associated w/ user
+        public List<Post> GetUserPosts(string userId)
+        {
+            var posts = _repo.Query<Post>().Where(p => p.UserId == userId).ToList();
+            return posts;
+        }
         //save post
         public async Task SavePost(IPrincipal user, Post post)
         {

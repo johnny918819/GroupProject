@@ -46,7 +46,36 @@ namespace GroupProject.Services
             return users;
         }
 
-        public ApplicationUser GetUser(string id)
+        public ApplicationUser GetActiveUser(string id)
+        {
+            ApplicationUser user = (from u in _repo.Query<ApplicationUser>()
+                                    where u.UserName == id
+                                    select new ApplicationUser
+                                    {
+                                        Id = u.Id,
+                                        UserName = u.UserName,
+                                        ProfileImage = u.ProfileImage,
+                                        FirstName = u.FirstName,
+                                        LastName = u.LastName,
+                                        City = u.City,
+                                        State = u.State,
+                                        ZipCode = u.ZipCode,
+                                        Country = u.Country,
+                                        Talent = u.Talent,
+                                        Email = u.Email,
+                                        BirthDay = u.BirthDay,
+                                        BirthMonth = u.BirthMonth,
+                                        Bio = u.Bio,
+                                        Sell = u.Sell,
+                                        StatusMessage = u.StatusMessage,
+                                        LookingFor = u.LookingFor,
+                                        AverageRating = u.AverageRating,
+                                        //Claims = u.Claims,
+                                        ConcurrencyStamp = u.ConcurrencyStamp
+                                    }).FirstOrDefault();
+            return user;
+        }
+        public ApplicationUser GetUserId(string id)
         {
             ApplicationUser user = (from u in _repo.Query<ApplicationUser>()
                                     where u.Id == id
@@ -78,7 +107,7 @@ namespace GroupProject.Services
 
         public void DeleteUser(string id)
         {
-            var userToDelete = GetUser(id);
+            var userToDelete = GetUserId(id);
             _repo.Delete(userToDelete);
         }
 
