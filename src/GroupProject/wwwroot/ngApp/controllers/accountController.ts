@@ -100,7 +100,8 @@ namespace GroupProject.Controllers {
 
         public register() {
             this.accountService.register(this.registerUser).then(() => {
-                this.$location.path('/home');
+                this.$location.path('/login');
+                this.accountService.logout();
             }).catch((results) => {
                 this.validationMessages = results;
             });
