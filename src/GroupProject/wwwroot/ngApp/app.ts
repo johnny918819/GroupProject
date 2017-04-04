@@ -107,7 +107,7 @@ namespace GroupProject {
             })
             .state('notFound', {
                 url: '/notFound',
-                templateUrl: '/ngApp/views/notFound.html'
+                templateUrl: '/ngApp/views/brokenLink.html'
             });
 
         // Handle request for non-existent route

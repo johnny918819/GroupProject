@@ -1,32 +1,33 @@
-<fieldset>
-    <legend>Login with a Social Provider</legend>
-
-    <ul>
-        <li ng-repeat="externalLogin in account.externalLogins">
-            <a target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/">{{externalLogin.displayName}}</a>
-        </li>
-    </ul>
-
-</fieldset>
-
-<fieldset>
-    <legend>Login Locally</legend>
-    <ul>
-        <li ng-repeat="error in controller.validationMessages">
-            {{error}}
-        </li>
-    </ul>
-
-    <form ng-submit="controller.login()">
-        <div>
-            <label>User name:</label>
-            <input ng-model="controller.loginUser.UserName" />
+<section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background mbr-section-with-arrow" id="header1-1" style="background-image: url(../../images/headOfMusic.gif)">
+    <img id="postcard" src="/images/sfondi.png" alt="postcard" class="img-responsive move" />
+    <div class="mbr-table-cell">
+        <div class="container">
+            <div class="row">
+                <div id="content" style="opacity:0.95;">
+                    <h1> Login</h1>
+                    <form role="form" ng-submit="controller.login()">
+                        <div class="form-group">
+                            <label for="username" class="iconic user"> Username </label>
+                            <input type="text" class="form-control" name="username" id="username" required="required" placeholder="Username" ng-model="controller.loginUser.UserName" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="iconic mail-alt"> Password </label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required" ng-model="controller.loginUser.password" />
+                        </div>
+                        <center>
+                            <div>
+                                <input type="submit" value="Login" />
+                                <br />
+                                <br />
+                                <u>OR</u>
+                                <br />
+                                <br />
+                                <a class="btn btn-lg btn-success-outline btn-success" href="/register">Register here</a>
+                            </div>
+                        </center>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div>
-            <label>Password:</label>
-            <input ng-model="controller.loginUser.password" />
-        </div>
-        <input type="submit" value="Login" />
-        <a href="/register">Register</a>
-    </form>
-</fieldset>
+    </div>
+</section>
