@@ -6,7 +6,7 @@ namespace GroupProject.Services {
         private storeUserInfo(userInfo) {
             // store user name
             this.$window.sessionStorage.setItem('userName', userInfo.userName);
-
+            console.log(userInfo.userName);
             // store claims
             this.$window.sessionStorage.setItem('claims', JSON.stringify(userInfo.claims));
             //this.$window.sessionStorage.setItem('location', userInfo.location);

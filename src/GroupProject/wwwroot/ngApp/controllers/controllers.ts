@@ -161,15 +161,37 @@ namespace GroupProject.Controllers {
         public logout() {
             this.accountService.logout();
         }
+        public posts;
+        public id;
 
-        constructor(private $http: ng.IHttpService, private filepickerService, private userHomeService: GroupProject.Services.UserHomeService, private accountService: GroupProject.Services.AccountService, private $stateParams: ng.ui.IStateParamsService, private $state: angular.ui.IStateService, private $scope: ng.IScope) {
-            this.$http.get(`/api/users/` + this.$stateParams["id"]).then((results) => {
+        constructor(private $http: ng.IHttpService, private filepickerService, private PostService: GroupProject.Services.PostService, private userHomeService: GroupProject.Services.UserHomeService, private accountService: GroupProject.Services.AccountService, private $stateParams: ng.ui.IStateParamsService, private $state: angular.ui.IStateService, private $scope: ng.IScope)
+        {
+            this.$http.get(`/api/users/` + this.id).then((results) => {
                 this.user = results.data;
-            })
-            return this.user;
-            //this.getUserById();
-        };
-    }
+                this.id = this.user.id;
+                this.getUserPosts();
+
+                console.log(this.posts);
+            });
+            
+            //return this.user;
+            
+            
+        }
+
+        public getUserPosts()
+        {
+            this.PostService.getPosts().then((data) => {
+                this.posts = data;
+            //this.PostService.getUserPosts(this.id)
+        
+        //    this.$http.get(`/api/post/userposts/` + id).then((response) => {
+        //this.posts = response.data;
+            });
+            console.log(this.posts);
+        }
+    } 
+
     angular.module(`GroupProject`).controller(`UserHomeController`, UserHomeController);
 
     export class UserProfileController {
@@ -211,7 +233,7 @@ namespace GroupProject.Controllers {
         private postId;
 
         constructor(private PostService: GroupProject.Services.PostService,
-            //private $uibModal: angular.ui.bootstrap.IModalService,
+            private $uibModal: angular.ui.bootstrap.IModalService,
             private accountService: GroupProject.Services.AccountService,
             private $stateParams: angular.ui.IStateParamsService) {
             this.getPosts();
@@ -236,35 +258,35 @@ namespace GroupProject.Controllers {
         }
 
         //controller for delete posts modal
-        //showModalDelPost(postId) {
-        //    this.$uibModal.open({
+        showModalDelPost(postId) {
+            this.$uibModal.open({
 
-        //        templateUrl: '/ngapp/views/postDelete.html',
-        //        controller: 'DialogController',
-        //        controllerAs: 'controller',
-        //        resolve: {
-        //            postId: () => postId,
-        //        },
-        //        size: 'lg'
-        //    }).closed.then(() => {
-        //        this.getPosts();
-        //    });
-        //}
+                templateUrl: '/ngapp/views/postDelete.html',
+                controller: 'DialogController',
+                controllerAs: 'controller',
+                resolve: {
+                    postId: () => postId,
+                },
+                size: 'lg'
+            }).closed.then(() => {
+                this.getPosts();
+            });
+        }
 
         ////controller for edit
-        //showModalEditPost(postId) {
-        //    this.$uibModal.open({
-        //        templateUrl: '/ngapp/views/postEdit.html',
-        //        controller: 'EditDialogController',
-        //        controllerAs: 'controller',
-        //        resolve: {
-        //            postId: () => postId,
-        //        },
-        //        size: 'lg'
-        //    }).closed.then(() => {
-        //        this.getPosts();
-        //    });
-        //}
+        showModalEditPost(postId) {
+            this.$uibModal.open({
+                templateUrl: '/ngapp/views/postEdit.html',
+                controller: 'EditDialogController',
+                controllerAs: 'controller',
+                resolve: {
+                    postId: () => postId,
+                },
+                size: 'lg'
+            }).closed.then(() => {
+                this.getPosts();
+            });
+        }
     }
 
     class DialogController {
@@ -345,7 +367,7 @@ namespace GroupProject.Controllers {
                     this.$uibModalInstance.close();
                 })
                 .catch(() => {
-                    console.log('Oops! Post Editor not working right now....');
+                    console.log('Oops! Post Editor err buddy ....');
                 });
         }
     }
@@ -376,7 +398,7 @@ namespace GroupProject.Controllers {
 
         public savePost() {
             this.PostService.savePost(this.postToSave).then(() => {
-                this.$state.go('updates');
+                this.$state.go('userHome');
             });
             if (!this.logged) {
 

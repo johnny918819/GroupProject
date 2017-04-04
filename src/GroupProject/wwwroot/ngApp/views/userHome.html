@@ -5,16 +5,8 @@
     <title>Welcome Artist!</title>
 </head>
 <body>
-    <!--<div>
-        <h1>Welcome to Let That Bang {{controller.user.userName}}!!</h1>
-    </div>
-    <div id="userHomeHead" class="col-lg-8 col-lg-offset-2">
-        <br />
-        <img id="profileImg" style="margin-bottom:25px;" ng-src="{{controller.user.profileImage}}" class="img-responsive" />
-        <h1 style="display:inline ; text-transform:capitalize;">{{controller.user.userName}}</h1>
-    </div>-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://bootswatch.com/cosmo/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/cosmo/bootstrap.min.css">-->
     <div class="mainbody container-fluid">
         <div class="row">
             <div class="navbar-wrapper">
@@ -109,7 +101,7 @@
                                     </div>
                                     <ul class="data-ctrl" ng-repeat="usr in controller.users | filter: controller.search" ui-sref="userHome({id: user.id})">
                                         <li>
-                                            <p> Handle: {{usr.userName}} / City: {{usr.city}} / Specialty: {{usr.talent}} / Contact: <a href="mailto:{{usr.email}}">{{usr.email}}</a></p>
+                                            <p> Handle: <a href="userProfile({id: usr.id})" class="ui-state-hover">{{usr.userName}}</a> / City: {{usr.city}} / Specialty: {{usr.talent}} / Contact: <a href="mailto:{{usr.email}}">{{usr.email}}</a></p>
                                         </li>
                                     </ul>
                                 </div>
@@ -151,6 +143,7 @@
                         </span>
                         <br><br>
                         <i class="fa fa-tags" aria-hidden="true"></i> <a href="/tags/gjc" class="tag">#gjc</a> <a href="/tags/hashtag" class="tag">#frickinhashtags</a> <a href="/tags/caturday" class="tag">#dangcats</a>
+                        <h1></h1><input type="button" onclick="location.href=`/createPost`;" value="New Post">
                         <br><br><hr>
                         <span class="pull-left">
                             <a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-files-o" aria-hidden="true"></i> Posts</a>
@@ -174,6 +167,7 @@
                             </a>
                         </div>
                         <h4><a href="#" style="text-decoration:none;"><strong>{{controller.user.userName}}</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
+                        
                         <span>
                             <div class="navbar-right">
                                 <div class="dropdown">
@@ -194,8 +188,32 @@
                         </span>
                         <hr>
                         <div class="post-content"> <!--post data not actual, just demo at this point-->
-                            <h1>My Posts</h1>
-                            <div ng-repeat="post in controller.user.posts" class="list-group">
+                            
+                            <!--<div class="img-rounded" id="homePost">
+                                <div id="postBlock">
+                                    <h1>Posts</h1>-->
+                                    <!--<h1></h1><a class="glyphicon glyphicon-comment" style="font-size:1.5em; margin:30px; color:orange;" href="/postCreate"></a>-->
+                                    <!--<br />
+                                    <div ng-repeat="post in controller.posts" class="list-group">
+                                        <ul href="#" class="list-group ">
+                                            <li class="shadowDark img-rounded" id="namebox">
+                                                <h3 id="postUserText"><b style="text-transform:capitalize;">{{post.user}}</b></h3>
+                                            </li>
+                                            <li id="innerText">{{post.comment}}</li>
+                                            <li ng-show="post.item">
+                                                <img id="postImage" width="650" class="shadowDark img-responsive" ng-src="{{post.item}}" />
+                                            </li>
+                                        </ul>
+                                        <div>
+                                            <a id="EditGliphicon" class="glyphicon glyphicon-remove" ></a>
+                                            <a id="EditGliphicon" class="glyphicon glyphicon-pencil" ></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>-->
+                            <!--<h1>My Posts</h1>-->
+                            <div ng-repeat="post in controller.userPosts" class="list-group">
+                                Hi
                                 <ul href="#" class="list-group ">
                                     <li class="shadowDark img-rounded" id="namebox">
                                         <h3 id="postUserText"><b style="text-transform:capitalize;">{{post.user}}</b></h3>
@@ -205,11 +223,12 @@
                                         <img id="postImage" width="650" class="shadowDark img-responsive" ng-src="{{post.item}}" />
                                     </li>
                                 </ul>
-                                <div ng-controller="PostController as postVM">
+                                <div> <!--ng-controller="PostController as postVM">-->
                                     <a id="EditGliphicon" class="glyphicon glyphicon-remove" ng-click="postVM.showModalDelPost(post.id)"></a>
                                     <a id="EditGliphicon" class="glyphicon glyphicon-pencil" ng-click="postVM.showModalEditPost(post.id)"></a>
                                 </div>
-                            </div>                        </div>
+                            </div>
+                        </div>
                         <hr>
                         <div>
                             <div class="pull-right btn-group-xs">
@@ -230,7 +249,7 @@
                                 </a>
                             </div>
                             <div class="media-body">
-                                <textarea class="form-control" rows="1" placeholder="Comment"></textarea>
+                                <textarea class="form-control" rows="1" placeholder="Comment">{{post.comment}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -336,8 +355,8 @@
                         <hr>
                         <div class="post-content">
                             <p>Sample post content with picture.</p>
-                            <img class="img-responsive" src="https://media.giphy.com/media/j1QQj6To9Pbxu/giphy.gif">
-                            <p><br><a href="/tags/christmas" class="tag">#Christmas</a> <a href="/tags/caturday" class="tag">#Caturday</a></p>
+                            <img class="img-responsive" src="https://media2.giphy.com/media/3o6ZtjUZAD5Lf0QFLW/200.webp#3">
+                            <p><br><a href="/tags/waynesworld" class="tag">#WaynesWorld</a> <a href="/tags/queen" class="tag">#Queen</a></p>
                         </div>
                         <hr>
                         <div>
@@ -392,7 +411,8 @@
                             </div>
                         </span>
                         <hr>
-                        <div class="post-content">
+                        <div ng-repeat="post in controller.user.posts" class="post-content">
+                            <p>{{post.comment}}</p>
                             <p>Sample post content with comments.</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
@@ -486,7 +506,12 @@
             </div>
         </div>
     </div>
-
+    <div>
+        <ul ng-repeat="post in controller.posts">
+            *
+            <li>{{controller.post.comment}}</li>
+        </ul>
+    </div>
 
         <!--<div>
         <h3 class="headName">Talent Search</h3>

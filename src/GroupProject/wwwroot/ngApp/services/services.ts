@@ -18,10 +18,7 @@ namespace GroupProject.Services {
             var user = this.usersResource.get({ id: id }).$promise;
             return user;
         }
-        //public getUserById(id) {
-        //    return this.usersResource.get({ id: id }).$promise;
-        //}
-        public getUserInfo() {
+         public getUserInfo() {
             return this.usersResource.getUserInfo();
         }
         public saveProfile(profileToSave) {
@@ -49,9 +46,11 @@ namespace GroupProject.Services {
 
     export class PostService {
         private postResource;
+        private userPostResource; 
 
         constructor(private $resource: angular.resource.IResourceService) {
             this.postResource = this.$resource('/api/post/:id');
+            
         }
 
         //create
@@ -66,6 +65,13 @@ namespace GroupProject.Services {
 
         public getPostById(id) {
             return this.postResource.get({ id: id });
+        }
+
+        // get by user
+        public getUserPosts(id) {
+            
+            this.userPostResource = this.$resource('/api/post/userposts/:id');
+            this.userPostResource.query({ id: id });
         }
 
         //delete

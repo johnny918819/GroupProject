@@ -33,6 +33,12 @@ namespace GroupProject.API
             return Ok(_service.GetPostById(id));
         }
 
+        // GET posts by userId
+        [HttpGet("userposts/{id}")]
+        public IActionResult GetUserPosts(string id)
+        {
+            return Ok(_service.GetUserPosts(id));
+        }
         // POST api/values
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Post post)

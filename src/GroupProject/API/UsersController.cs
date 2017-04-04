@@ -34,14 +34,14 @@ namespace GroupProject.API
         [HttpGet("profile/{id}")]
         public ApplicationUser GetProfileId(string id)
         {
-            return _usrService.GetUser(id);
+            return _usrService.GetUserId(id);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public ApplicationUser Get(string id)
         {
-            return _usrService.GetUser(User.Identity.Name);
+            return _usrService.GetActiveUser(User.Identity.Name);
         }
 
         // POST api/values
