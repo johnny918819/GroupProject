@@ -9,28 +9,28 @@
     <link rel="stylesheet" href="https://bootswatch.com/cosmo/bootstrap.min.css">
     <div class="mainbody container-fluid">
         <div class="row">
-            <div class="navbar-wrapper">
+            <div class="profileNavbar-wrapper">
                 <div class="container-fluid">
-                    <div class="navbar navbar-default navbar-static-top" role="navigation">
+                    <div class="profileNavbar profileNavbar-default profileNavbar-static-top" role="navigation">
                         <div class="container-fluid">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <div class="profileNavbar-header">
+                                <button type="button" class="profileNavbar-toggle" data-toggle="collapse" data-target=".profileNavbar-collapse">
                                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand" href="/about" style="margin-right:-8px; margin-top:-5px;">
+                                <a class="profileNavbar-brand" href="/about" style="margin-right:-8px; margin-top:-5px;">
                                     <img alt="Brand" src="/images/defaultUser.png" width="30" height="30">
                                 </a>
-                                <a class="navbar-brand" href="/about">*Let Th@t Bang!*</a>
+                                <a class="profileNavbar-brand" href="/about">*Let Th@t Bang!*</a>
                                 <i class="brand_network"><small><small>gjc Network</small></small></i>
                             </div>
-                            <div class="navbar-collapse collapse">
-                                <ul class="nav navbar-nav">
+                            <div class="profileNavbar-collapse collapse">
+                                <ul class="profileNav profileNavbar-nav">
                                     <li><a href="/ngApp/views/userHome.html">Home</a></li>
                                     <li><a href="/rating">My Rating</a></li>
                                     <li><span class="badge badge-important">2</span><a href="#"><i class="fa fa-bell-o fa-lg" aria-hidden="false"></i></a></li>
                                     <li><a href="#"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i></a></li>
                                 </ul>
-                                <ul class="nav navbar-nav navbar-right">
+                                <ul class="profileNav profileNavbar-nav profileNavbar-right">
                                     <li uib-dropdown class="dropdown" role="menu">
                                         <a href="#" uib-dropdown-toggle class="profile-image dropdown-toggle">
                                             <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
@@ -43,7 +43,7 @@
                                         </a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li role="menuitem">
-                                                <div class="navbar-content">
+                                                <div class="profileNavbar-content">
                                                     <div class="row">
                                                         <div class="col-md-5">
                                                             <img src="{{controller.user.profileImage}}" alt="Alternate Text" class="img-responsive" width="120" height="120" />
@@ -62,8 +62,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="navbar-footer">
-                                                    <div class="navbar-footer-content">
+                                                <div class="profileNavbar-footer">
+                                                    <div class="profileNavbar-footer-content">
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <a href="#" class="btn btn-default btn-sm"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Change Passowrd</a>

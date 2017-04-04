@@ -1,6 +1,22 @@
 <html ng-app="GroupProject">
 <head>
-    <title>GroupProject</title>
+
+    @* Begin Navbar Dependencies *@
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="~/images/LETITBANG.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="~/css/material.css">
+    <link rel="stylesheet" href="~/css/tether.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/dropdownStyle.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/themeStyle.css">
+    <link rel="stylesheet" href="~/css/additional.css">
+    @* End Navbar Dependencies *@
+
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" /> <!--John added-->
@@ -10,63 +26,132 @@
     <link href="~/bower_components/fullcalendar/dist/fullcalendar.css" rel="stylesheet" />
     <base href="/" />
 
-    <title>GroupProject</title>
+    <title>Let Th@t Bang!</title>
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
 
     <base href="/" />
 
-    @* This is the fram for the map *@
-    <style>
-        .angular-google-map-container {
-            height: 400px;
-            width: 1000px;
-            border: 1px solid black;
-        }
-    </style>
 </head>
 <body ng-controller="AccountController as account">
-    <div class="container">
-        <h1>Let Th@t Bang!</h1>
-        <div>
+    @* Begin Navbar Codeblock *@
+    <section id="menu-0">
+        <nav class="navbar navbar-dropdown bg-color transparent navbar-fixed-top">
+            <div class="container">
+                <div class="mbr-table">
+                    <div class="mbr-table-cell">
+                        <div class="navbar-brand">
+                            <a href="/" class="navbar-logo"><img src="~/images/LETITBANG.png"></a>
+                        </div>
+                    </div>
+                    <div class="mbr-table-cell">
+                        <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                            <div class="hamburger-icon"></div>
+                        </button>
+                        <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar">
+                            <li class="nav-item">
+                                <a class="nav-link link" href="/">Main</a>
+                            </li>
+                            <li class="nav-item dropdown open">
+                                <a class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">Features</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/notFound">Mobile friendly</a>
+                                    <a class="dropdown-item" href="/mapview">View Users Near You</a>
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle" data-toggle="dropdown-submenu" href="/notFound" aria-expanded="false">Schedule &amp; Organize Events</a>
+                                        <div class="dropdown-menu dropdown-submenu">
+                                            <a class="dropdown-item" href="/notFound">Search for talent</a>
+                                            <a class="dropdown-item" href="/notFound">Search for Enigneers</a>
+                                            <div class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="false">View all Users</a>
+                                                <div class="dropdown-menu dropdown-submenu">
+                                                    <a class="dropdown-item" href="/mapview">Map</a>
+                                                    <a class="dropdown-item" href="#">List</a>
+                                                </div>
+                                            </div>
+                                            <a class="dropdown-item" href="/notFound">Social buttons</a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle" data-toggle="dropdown-submenu">Pay for Services Securely</a>
+                                        <div class="dropdown-menu dropdown-submenu">
+                                            <a class="dropdown-item" href="#">Paypal Payment Portal</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
 
-            <a href="/">Home</a> /
-            <a href="/allusers">User List</a> /
-            <a href="/mapview">Map View</a> /
-            <a href="/calendar">Calendar</a> /
-            <a href="/userHome">User View</a> /
-            <a href="/editProfile">Edit Profile</a> /
-            <a href="/rating">Star Rating</a> /
-            <a href="/orgHome">Organizer View</a> /
-            <a href="/about">About</a> / 
-            <a href="/secret">Secret</a> /
-            <a href="/login" ng-show="!account.isLoggedIn()">Login</a> /
-            @*<a href="" ng-click="account.loginModal()" ng-show="!account.isLoggedIn()"><strong>Future LogIn Modal</strong></a>*@
-            <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-            <div ng-show="account.isLoggedIn()">
-                [{{account.getUserName()}}]
+                            @* Begin Admin access Menu *@
+                            <li class="nav-item dropdown open">
+                                <a class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">Admin Access Menu</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/allusers">User List</a>
+                                    <a class="dropdown-item" href="/mapview">Map View</a>
+                                    <a class="dropdown-item" href="/calendar">Calendar</a>
+                                    <a class="dropdown-item" href="/userHome">User View</a>
+                                    <a class="dropdown-item" href="/editProfile">Edit Profile</a>
+                                    <a class="dropdown-item" href="/rating">Star Rating</a>
+                                    <a class="dropdown-item" href="/orgHome">Organizer View</a>
+                                    <a class="dropdown-item" href="/about">About</a>
+                                    <a class="dropdown-item" href="/secret">Secret</a>
+                                    <div ng-show="!account.isLoggedIn()">
+                                        Already have an account with us?
+                                        <a class="btn btn-white" href="/login" ng-show="!account.isLoggedIn()">Login</a>
+                                        <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+                                    </div>
+                                    @*<a href="" ng-click="account.loginModal()" ng-show="!account.isLoggedIn()"><strong>Future LogIn Modal</strong></a>*@
+                                </div>
+                            </li>
+                            @* End Admin access menu *@
+
+                            <li class="nav-item dropdown open">
+                                <a class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">HELP</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/about">Contact us</a>
+                                </div>
+                            </li>
+                            <li class="navbar-caption navbar-text" ng-show="!account.isLoggedIn()">
+                                Already have an account with us?
+                            </li>
+                            <li class="nav-item" ng-show="!account.isLoggedIn()">
+                                <a class="btn btn-white-outline" aria-expanded="true" href="/login" ng-show="!account.isLoggedIn()">Login</a>
+                                <div ng-show="account.isLoggedIn()">[{{account.getUserName()}}]</div>
+                                <a class="btn btn-white-outline" href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+                                @*<a href="" ng-click="account.loginModal()" ng-show="!account.isLoggedIn()"><strong>Future LogIn Modal</strong></a>*@
+                            </li>
+
+                            <li class="nav-item">
+                                <div ng-show="account.isLoggedIn()">
+
+                                    <br />
+                                    <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+                            <div class="close-icon"></div>
+                        </button>
+                    </div>
+                </div>
             </div>
+        </nav>
+    </section>
+    @* End Navbar Codeblock *@
 
-        </div>
-        <hr />
-
-        <ui-view></ui-view>
-    </div>
+    <ui-view></ui-view>
 
     <!-- Library Files -->
     <script src="~/bower_components/jquery/dist/jquery.min.js"></script> <!--Gino added-->
     <script src="~/bower_components/jquery-ui/jquery-ui.min.js"></script><!--Gino added-->
-   
-     <!--Gino Ui-Calendar-->
+    <!--Gino Ui-Calendar-->
     <script src="~/bower_components/moment/min/moment.min.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="~/bower_components/angular-ui-calendar/src/calendar.js"></script>
     <script src="~/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
     <script src="~/bower_components/fullcalendar/dist/gcal.js"></script>
 
-   
-   
     <script src="/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/bower_components/angular-touch/angular-touch.js"></script>
@@ -80,7 +165,19 @@
     <script src="/ngapp/controllers/controllers.js"></script>
     <script src="/ngapp/services/services.js"></script>
     <script src="/ngApp/controllers/calendarController.js"></script>
-   
+
+    @*Begin Navbar*@
+    <script src="~/ngApp/JavaScript/jquery.min.js"></script>
+    <script src="~/ngApp/JavaScript/tether.min.js"></script>
+    <script src="~/ngApp/JavaScript/bootstrap.min.js"></script>
+    <script src="~/ngApp/JavaScript/smooth-scroll.js"></script>
+    <script src="~/ngApp/JavaScript/dropdownScript.min.js"></script>
+    <script src="~/ngApp/JavaScript/jquery.touch-swipe.min.js"></script>
+    <script src="~/ngApp/JavaScript/jquery.viewportchecker.js"></script>
+    <script src="~/ngApp/JavaScript/jarallax.js"></script>
+    <script src="~/ngApp/JavaScript/themeScript.js"></script>
+    @*End Navbar*@
+
     @* This is the script for the Google Map feature *@ <!--Gino added-->
     <script src="~/bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script><!--Gino added-->
     <script src="~/bower_components/lodash/dist/lodash.min.js"></script><!--Gino added-->
