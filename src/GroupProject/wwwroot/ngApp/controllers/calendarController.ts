@@ -1,6 +1,8 @@
 ﻿namespace GroupProject.Controllers {
     export class EventsController {
-        constructor() {
+        public newEvents;
+        constructor(private $uibModal: angular.ui.bootstrap.IModalService, private $state: ng.ui.IStateService, private $http: ng.IHttpService, private $scope ) {
+            
             //make an http  GET request for events and populate this.eventSources.events
             this.eventSources = [
                 {
@@ -13,7 +15,8 @@
                             title: 'Event2',
                             start: '2017-03-05'
                         }
-                    ],
+                    ] ,
+
                     color: 'black',     // an option!
                     textColor: 'white', // an option!
                     backgroundColor: 'red',
@@ -42,9 +45,63 @@
 
                 }
             };
+            this.getEvents();
         }
+
+        public getEvents() {
+            this.$http.get("/api/eventMeetUps/").then((res) => {
+                this.eventSources[0].events = res.data;
+                //(<Array<{ title: '', name, '', start: string, startDate: '' }>>res.data).forEach((e) => {
+                //    this.eventSources[0].events.push({
+                //        title: e.name,
+                //        start: e.startDate
+                //    });
+                //});
+
+  
+                console.log(this.eventSources[0].events);
+            })
+        }
+
+         EventModal() {
+            this.$uibModal.open({
+
+                templateUrl: '/ngApp/views/modals/createEvent.html',
+                controller: EventModalController,
+                controllerAs: 'controller',
+                resolve: {},
+                size: 'md'
+            }).closed.then(() => {
+                this.$state.reload();
+            });
+        }
+
         public message = 'Hello New CalendarController';
         public eventSources; 
         public uiConfig; 
     }
+
+    export class EventModalController {
+        public event;
+        constructor(
+            private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance,
+            private $state: angular.ui.IStateService,
+            private $stateParams: angular.ui.IStateParamsService,
+            private $location: ng.ILocationService,
+            private $http: ng.IHttpService
+        ) { }
+        //goe for modal and create 
+
+        public createEvent() {
+            this.$http.post("/api/eventMeetUps/", this.event).then((res) => {
+                this.closeModal();
+            })
+        }
+
+        public closeModal() {
+            this.$uibModalInstance.close();
+        }
+
+    }
+    angular.module("GroupProject").controller("EventModalController", EventModalController);
 }

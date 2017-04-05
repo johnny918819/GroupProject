@@ -60,10 +60,11 @@ namespace GroupProject
             services.AddScoped<IUserServices, UserServices>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IRatingsService, RatingsService>();
+            services.AddScoped<IEventMeetUpServices, EventMeetUpServices>();
 
-            
-                        // add security policies
-                        services.AddAuthorization(options =>
+
+            // add security policies
+            services.AddAuthorization(options =>
                         {
                             options.AddPolicy("AdminOnly", policy => policy.RequireClaim("IsAdmin"));
                         });
