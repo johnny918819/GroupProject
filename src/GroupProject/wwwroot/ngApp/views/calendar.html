@@ -3,7 +3,7 @@
 
 <div class="btn-toolbar btn btn warning"  ui-calendar="controller.uiConfig.calendar" ng-model="controller.eventSources"></div>
 <!--the code for the modal-->
-
+<button ng-click="controller.EventModal()" class="btn btn-danger">Add Event</button>
     <!--Cort-->
     <label>Click here to Pay Fee for Calendar Event add</label>
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -13,4 +13,10 @@
         <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
         <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
     </form>
+
+<div>
+    <ul ng-repeat="e in controller.newEvents">
+        <li>{{e.name}}</li>
+    </ul>
+</div>
 
