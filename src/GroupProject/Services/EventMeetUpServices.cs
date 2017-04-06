@@ -21,13 +21,13 @@ namespace GroupProject.Services
                                               select new EventMeetUp
                                               {
                                                   Id = e.Id,
-                                                  Name = e.Name,
+                                                  Title = e.Title,
                                                   Attendees = e.Attendees,
                                                   Description = e.Description,
                                                   MaxCapacity = e.MaxCapacity,
                                                   Location = e.Location,
-                                                  StartDate = e.StartDate,
-                                                  EndDate = e.EndDate,
+                                                  Start = e.Start,
+                                                  End = e.End,
 
 
                                               }).ToList();
@@ -42,13 +42,13 @@ namespace GroupProject.Services
                                   select new EventMeetUp
                                   {
                                       Id = e.Id,
-                                      Name = e.Name,
+                                      Title = e.Title,
                                       Attendees = e.Attendees,
                                       Description = e.Description,
                                       MaxCapacity = e.MaxCapacity,
                                       Location = e.Location,
-                                      StartDate = e.StartDate,
-                                      EndDate = e.EndDate,
+                                      Start = e.Start,
+                                      End = e.End,
 
                                   }).FirstOrDefault();
             return gEvent;

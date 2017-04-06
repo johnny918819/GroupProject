@@ -8,11 +8,12 @@ namespace GroupProject.Models
     public class EventMeetUp
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public string Title { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
 
-        ////User relationship one to many//
+        ////User relationship one to many//\
+       
         public ICollection<ApplicationUser> Attendees { get; set; }
         public string Location { get; set; }
         public int MaxCapacity { get; set; }

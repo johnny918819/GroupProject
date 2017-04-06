@@ -1,7 +1,8 @@
 ﻿<!--Gino-->
 <h1>{{controller.message}}</h1>
 
-<div class="btn-toolbar btn btn warning"  ui-calendar="controller.uiConfig.calendar" ng-model="controller.eventSources"></div>
+
+<!--<div class="btn-toolbar btn btn warning"  ui-calendar="controller.uiConfig.calendar" ng-model="controller.eventSources"></div>-->
 <!--the code for the modal-->
 <button ng-click="controller.EventModal()" class="btn btn-danger">Add Event</button>
     <!--Cort-->
@@ -14,9 +15,14 @@
         <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
     </form>
 
-<div>
-    <ul ng-repeat="e in controller.newEvents">
-        <li>{{e.name}}</li>
+<div class="col-md-8 col-lg-offset-1 ">
+    <ul class="col-lg-4 eventBox list-unstyled " ng-repeat="e in controller.events">
+        <li>{{e.title}}</li>
+        <li><p>{{e.start}}</p> - <p>{{e.end}}</p></li>
+        <li>{{e.attendees.users}}</li>
+        <li>{{e.location}}</li>
+        <li>{{e.maxcapity}}</li>
+        <li>{{e.description}}</li>
     </ul>
 </div>
 
