@@ -36,7 +36,7 @@
     }
 
         .navbar-dropdown .navbar-logo img {
-            height: 9.125rem;
+            height: 4.125rem;
             transition: all 0.2s ease-in-out;
         }
 
@@ -73,7 +73,7 @@
     }
 
         .navbar-dropdown.navbar-short .navbar-logo img {
-            height: 5.375rem;
+            height: 4.375rem;
         }
 
     .navbar-dropdown.navbar-short .mbr-table-cell {

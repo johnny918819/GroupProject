@@ -3,16 +3,16 @@
 
     @* Begin Navbar Dependencies *@
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="~/images/LETITBANG.png" type="image/x-icon">
+    <link rel="shortcut icon" href="~/images/ltbLogo.png" type="image/x-icon">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;subset=latin">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="~/css/material.css">
-    <link rel="stylesheet" href="~/css/tether.min.css">
-    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/tether.css">
+    <link rel="stylesheet" href="~/css/bootstrap.css">
     <link rel="stylesheet" href="~/css/dropdownStyle.css">
-    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/animate.css">
     <link rel="stylesheet" href="~/css/themeStyle.css">
     <link rel="stylesheet" href="~/css/additional.css">
     @* End Navbar Dependencies *@
@@ -42,7 +42,7 @@
                 <div class="mbr-table">
                     <div class="mbr-table-cell">
                         <div class="navbar-brand">
-                            <a href="/" class="navbar-logo"><img src="~/images/LETITBANG.png"></a>
+                            <a href="/" class="navbar-logo"><img src="~/images/ltbLogo.PNG"></a>
                         </div>
                     </div>
                     <div class="mbr-table-cell">
@@ -56,7 +56,6 @@
                             <li class="nav-item dropdown open">
                                 <a class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">Features</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="/notFound">Mobile friendly</a>
                                     <a class="dropdown-item" href="/mapview">View Users Near You</a>
                                     <div class="dropdown">
                                         <a class="dropdown-item dropdown-toggle" data-toggle="dropdown-submenu" href="/notFound" aria-expanded="false">Schedule &amp; Organize Events</a>
@@ -83,7 +82,7 @@
                             </li>
 
                             @* Begin Admin access Menu *@
-                            <li class="nav-item dropdown open">
+                            <li class="nav-item dropdown open" ng-show="account.getClaim('IsAdmin')">
                                 <a class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">Admin Access Menu</a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="/allusers">User List</a>
@@ -91,8 +90,6 @@
                                     <a class="dropdown-item" href="/calendar">Calendar</a>
                                     <a class="dropdown-item" href="/userHome">User View</a>
                                     <a class="dropdown-item" href="/editProfile">Edit Profile</a>
-                                    <a class="dropdown-item" href="/rating">Star Rating</a>
-                                    <a class="dropdown-item" href="/orgHome">Organizer View</a>
                                     <a class="dropdown-item" href="/about">About</a>
                                     <a class="dropdown-item" href="/secret">Secret</a>
                                     <div ng-show="!account.isLoggedIn()">
@@ -166,17 +163,17 @@
     <script src="/ngapp/services/services.js"></script>
     <script src="/ngApp/controllers/calendarController.js"></script>
 
-    @*Begin Navbar*@
-    @*<script src="~/ngApp/JavaScript/jquery.min.js"></script>
-    <script src="~/ngApp/JavaScript/tether.min.js"></script>
-    <script src="~/ngApp/JavaScript/bootstrap.min.js"></script>
+    @*Begin Navbar JavaScript dependencies *@
+    <script src="~/ngApp/JavaScript/jquery.js"></script>
+    <script src="~/ngApp/JavaScript/tether.js"></script>
+
     <script src="~/ngApp/JavaScript/smooth-scroll.js"></script>
-    <script src="~/ngApp/JavaScript/dropdownScript.min.js"></script>
-    <script src="~/ngApp/JavaScript/jquery.touch-swipe.min.js"></script>
+    <script src="~/ngApp/JavaScript/dropdownScript.js"></script>
+    <script src="~/ngApp/JavaScript/jquery.touch-swipe.js"></script>
     <script src="~/ngApp/JavaScript/jquery.viewportchecker.js"></script>
     <script src="~/ngApp/JavaScript/jarallax.js"></script>
-    <script src="~/ngApp/JavaScript/themeScript.js"></script>*@
-    @*End Navbar*@
+    <script src="~/ngApp/JavaScript/themeScript.js"></script>
+    @*End Navbar JavaScript dependencies *@
 
     <script src="~/ngApp/controllers/mapController.js"></script>
     @* This is the script for the Google Map feature *@ <!--Gino added-->

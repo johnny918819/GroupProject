@@ -1,4 +1,4 @@
-﻿<div class="container">
+﻿<div class="container-fluid padFromTop">
     <table class="table table-bordered table-condensed table-hover">
         <thead>
             <tr>
@@ -18,7 +18,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="user in controller.users">
-                <td ui-sref="userProfile({id: user.id})" class="ui-state-hover"> <img src="{{user.profileImage}}" /> {{user.userName}} </td>
+                <td ui-sref="userProfile({id: user.id})" class="ui-state-hover"> <img src="{{user.profileImage}}" width="100"/> {{user.userName}} </td>
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
                 <td>{{user.city}}</td>
