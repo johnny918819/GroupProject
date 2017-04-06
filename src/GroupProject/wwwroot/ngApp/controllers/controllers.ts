@@ -30,6 +30,7 @@ namespace GroupProject.Controllers {
 
     export class AllUsersController {
         public users;
+        //public formattedAverageRating;
 
         public deleteUser(id: string) {
             this.$http.delete(`/api/users/` + id).then((response) => {
@@ -39,8 +40,9 @@ namespace GroupProject.Controllers {
         constructor(private RatingService: GroupProject.Services.RatingService, private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService) {
             this.$http.get("/api/users").then((response) => {
                 this.users = response.data;
-
             });
+            //Fix this to display the rating in a #.## format
+            //this.formattedAverageRating = (Math.round(100 * this.users.averageRating) / 100).toFixed(2);
         }
     }
 

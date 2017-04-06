@@ -1,6 +1,12 @@
 ﻿.centered-form{
 	margin-top: 60px;
 }
+.padFromTop{
+    margin-top:5%;
+}
+.paddedEdges{
+    margin:5%;
+}
 
 /*.centered-form .panel{
 	background: rgba(255, 255, 255, 0.8);
