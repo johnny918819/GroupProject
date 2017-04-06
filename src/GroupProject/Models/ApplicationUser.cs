@@ -30,5 +30,8 @@ namespace GroupProject.Models
         //rating prop
         public ICollection<Rating> Rating { get; set; }
         public float AverageRating { get; set; }
+
+        //Gino add------one to many for User attendees//
+        public List<EventMeetUp> Events { get; set; }
     }    
 }

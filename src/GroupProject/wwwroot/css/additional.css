@@ -497,3 +497,12 @@ h6,
   color: #ffffff;
   text-align: center;
 }
+.eventBox{
+    background-color:lightblue;
+    border-radius: 15px 5px;
+    font-size:2em;
+    color:darkslategrey;
+    font:bold;
+    padding:3%;
+    margin:2%;
+}

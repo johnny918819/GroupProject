@@ -10,6 +10,8 @@ namespace GroupProject.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<EventMeetUp> EventMeetUps { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Rating> Rating { get; set; }
 
@@ -22,6 +24,9 @@ namespace GroupProject.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            //Gino added custom built model
+            builder.Entity<ApplicationUser>().HasMany(u => u.Events);
+            builder.Entity<EventMeetUp>().HasMany(e => e.Attendees);
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);

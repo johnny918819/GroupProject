@@ -8,9 +8,10 @@ using GroupProject.Data;
 namespace GroupProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170403062312_calbackend")]
+    partial class calbackend
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -110,15 +111,15 @@ namespace GroupProject.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<DateTime>("End");
+                    b.Property<DateTime>("EndDate");
 
                     b.Property<string>("Location");
 
                     b.Property<int>("MaxCapacity");
 
-                    b.Property<DateTime>("Start");
+                    b.Property<string>("Name");
 
-                    b.Property<string>("Title");
+                    b.Property<DateTime>("StartDate");
 
                     b.HasKey("Id");
 

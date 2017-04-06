@@ -1,4 +1,4 @@
-﻿/// <autosync enabled="true" />
+/// <autosync enabled="true" />
 /// <reference path="../bower_components/angular/angular.js" />
 /// <reference path="../bower_components/angular-animate/angular-animate.js" />
 /// <reference path="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js" />
