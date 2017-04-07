@@ -18,9 +18,9 @@
                                 <div class="bar">
                                     <input ng-model="controller.search" ng-model-options="{debounce:1000}" ng-change="controller.fetch()" placeholder="Enter talent, city, or zip" />
                                 </div>
-                                <ul class="data-ctrl" ng-repeat="usr in controller.users | filter: controller.search" ui-sref="userHome({id: user.id})">
+                                <ul class="data-ctrl" ng-repeat="usr in controller.users | filter: controller.search">
                                     <li>
-                                        <p> Handle: {{usr.userName}} / City: {{usr.city}} / Specialty: {{usr.talent}} / Contact: <a href="mailto:{{usr.email}}">{{usr.email}}</a></p>
+                                        <p> Handle: <a ui-sref="userProfile({id: usr.id})">{{usr.userName}}</a> / City: {{usr.city}} / Specialty: {{usr.talent}} / Contact: <a href="mailto:{{usr.email}}">{{usr.email}}</a></p>
                                     </li>
                                 </ul>
                             </div>
@@ -45,7 +45,7 @@
                         <h1 class="panel-title pull-left" style="font-size:30px;">{{controller.user.firstName}} {{controller.user.lastName}} <small>{{controller.user.email}}</small> <small> Rating: {{controller.user.averageRating}}</small>
                         <i class="fa fa-check text-success" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="John Doe is sharing with you"></i></h1>
                         <div class="dropdown pull-right">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <button class="btn btn-success" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 Friends
                                 <span class="caret"></span>
                             </button>
@@ -73,7 +73,7 @@
                     </span>
                 </div>
             </div>
-            <a href="/allusers" class="button" >Back to User List</a>
+            <a href="/allusers" class="button" ng-show="account.getClaim('IsAdmin')">Back to User List</a> <a href="/userHome" class="button">Back to User Home</a>
         </div>
     </div>
 </div>

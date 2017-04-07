@@ -57,10 +57,11 @@
 
         public getEvents() {
             this.$http.get("/api/eventMeetUps/").then((res) => {
-                
+            
                 (<Array<any>>res.data).forEach((e) => {
                     this.eventSources[0].events.push(e);
                 });
+                console.log("events");
                 console.log(this.eventSources[0].events);
             })
         }

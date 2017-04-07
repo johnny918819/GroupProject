@@ -28,9 +28,9 @@
                                     <div class="bar">
                                         <input ng-model="controller.search" ng-model-options="{debounce:1000}" ng-change="controller.fetch()" placeholder="Enter talent, city, or zip" />
                                     </div>
-                                    <ul class="data-ctrl" ng-repeat="usr in controller.users | filter: controller.search" ui-sref="userHome({id: user.id})">
+                                    <ul class="data-ctrl" ng-repeat="usr in controller.users | filter: controller.search">
                                         <li>
-                                            <p> Handle: <a href="userProfile({id: usr.id})" class="ui-state-hover">{{usr.userName}}</a> / City: {{usr.city}} / Specialty: {{usr.talent}} / Contact: <a href="mailto:{{usr.email}}">{{usr.email}}</a></p>
+                                            <p> Handle: <a ui-sref="userProfile({id: usr.id})">{{usr.userName}}</a> / City: {{usr.city}} / Specialty: {{usr.talent}} / Contact: <a href="mailto:{{usr.email}}">{{usr.email}}</a></p>
                                         </li>
                                     </ul>
                                 </div>
@@ -111,7 +111,7 @@
                             </ul>
                             <!-- End Profile drop down mini NavBar utility -->
                             <div class="dropdown pull-right">
-                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <button class="btn btn-success" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     Friends
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -124,7 +124,7 @@
                             </div>
                         </span>
                         <br><br>
-                        <i class="fa fa-tags" aria-hidden="true"></i> <a href="/tags/gjc" class="tag">#gjc</a> <a href="/tags/hashtag" class="tag">#frickinhashtags</a> <a href="/tags/caturday" class="tag">#dangcats</a>
+                        <i class="fa fa-tags" aria-hidden="true"></i> <a href="/tags/gjc" class="tag">#gjc</a> <a href="/tags/hashtag" class="tag">#sillyhashtags</a> <a href="/tags/caturday" class="tag">#petsounds</a>
                         <h1></h1><input type="button" onclick="location.href=`/createPost`;" value="New Post">
                         <br><br><hr>
                         <span class="pull-left">
@@ -153,7 +153,7 @@
                         <span>
                             <div class="navbar-right">
                                 <div class="dropdown">
-                                    <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <button class="btn btn-link btn-xs" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                         <i class="fa fa-cog" aria-hidden="true"></i>
                                         <span class="caret"></span>
                                     </button>
@@ -171,46 +171,8 @@
                         <hr>
                         <div class="post-content">
                             <!--post data not actual, just demo at this point-->
-                            <!--<div class="img-rounded" id="homePost">
-                                <div id="postBlock">
-                                    <h1>Posts</h1>-->
-                            <!--<h1></h1><a class="glyphicon glyphicon-comment" style="font-size:1.5em; margin:30px; color:orange;" href="/postCreate"></a>-->
-                            <!--<br />
-                                    <div ng-repeat="post in controller.posts" class="list-group">
-                                        <ul href="#" class="list-group ">
-                                            <li class="shadowDark img-rounded" id="namebox">
-                                                <h3 id="postUserText"><b style="text-transform:capitalize;">{{post.user}}</b></h3>
-                                            </li>
-                                            <li id="innerText">{{post.comment}}</li>
-                                            <li ng-show="post.item">
-                                                <img id="postImage" width="650" class="shadowDark img-responsive" ng-src="{{post.item}}" />
-                                            </li>
-                                        </ul>
-                                        <div>
-                                            <a id="EditGliphicon" class="glyphicon glyphicon-remove" ></a>
-                                            <a id="EditGliphicon" class="glyphicon glyphicon-pencil" ></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>-->
-                            <!--<h1>My Posts</h1>-->
-                            <div ng-repeat="post in controller.userPosts" class="list-group">
-                                Hi
-                                <ul href="#" class="list-group ">
-                                    <li class="shadowDark img-rounded" id="namebox">
-                                        <h3 id="postUserText"><b style="text-transform:capitalize;">{{post.user}}</b></h3>
-                                    </li>
-                                    <li id="innerText">{{post.comment}}</li>
-                                    <li ng-show="post.item">
-                                        <img id="postImage" width="650" class="shadowDark img-responsive" ng-src="{{post.item}}" />
-                                    </li>
-                                </ul>
-                                <div>
-                                    <!--ng-controller="PostController as postVM">-->
-                                    <a id="EditGliphicon" class="glyphicon glyphicon-remove" ng-click="postVM.showModalDelPost(post.id)"></a>
-                                    <a id="EditGliphicon" class="glyphicon glyphicon-pencil" ng-click="postVM.showModalEditPost(post.id)"></a>
-                                </div>
-                            </div>
+                            <p>Anyone else going to godfather's gig on Saturday night? Hit me up if you are!</p>
+                            <p>"At 53, Brown has been performing long enough to predate the Motown sound, the disco craze and the rap attack—and he is still recording such successful tunes as Living in America"</p>
                         </div>
                         <hr>
                         <div>
@@ -228,7 +190,7 @@
                         <div class="media">
                             <div class="pull-left">
                                 <a href="#">
-                                    <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="35" height="35" style="margin-left:3px; margin-right:-5px;">
+                                    <img class="media-object img-circle" src="/images/defaultUser.png" width="35" height="35" style="margin-left:3px; margin-right:-5px;">
                                 </a>
                             </div>
                             <div class="media-body">
@@ -249,7 +211,7 @@
                         <span>
                             <div class="navbar-right">
                                 <div class="dropdown">
-                                    <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <button class="btn btn-link btn-xs" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                         <i class="fa fa-cog" aria-hidden="true"></i>
                                         <span class="caret"></span>
                                     </button>
@@ -270,15 +232,15 @@
                                 <div class="panel-body">
                                     <div class="pull-left">
                                         <a href="#">
-                                            <img class="media-object img-circle" src="https://diaspote.org/uploads/images/thumb_large_283df6397c4db3fe0344.png" width="50" height="50" style="margin-right:8px; margin-top:-5px;">
+                                            <img class="media-object img-circle" src="/images/mrjoshua.png" width="50" height="50" style="margin-right:8px; margin-top:-5px;">
                                         </a>
                                     </div>
-                                    <h4><a href="#" style="text-decoration:none;"><strong>✪ SтeғOғғιcιel ✪ ツ</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> about 15 hours ago</i></a></small></small></h4>
+                                    <h4><a href="#" style="text-decoration:none;"><strong>✪ MrJoshua ✪ ツ</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> about 15 hours ago</i></a></small></small></h4>
                                     <hr>
                                     <div class="post-content">
-                                        Reshare post example.
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
+                                        Favorite quotes:
+                                        <p>"Music and acting are the same thing; you must understand that art is only the search, not the final form."</p>
+                                        <p>"Fun stands for 'Finally Understanding Nothing'; that's what's fun about fun, you don't have to get it!"</p>                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
                                     </div>
                                 </div>
                             </div>
@@ -299,7 +261,7 @@
                         <div class="media">
                             <div class="pull-left">
                                 <a href="#">
-                                    <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="35" height="35" style="margin-left:3px; margin-right:-5px;">
+                                    <img class="media-object img-circle" src="/images/defaultUser.png" width="35" height="35" style="margin-left:3px; margin-right:-5px;">
                                 </a>
                             </div>
                             <div class="media-body">
@@ -313,14 +275,14 @@
                     <div class="panel-body">
                         <div class="pull-left">
                             <a href="#">
-                                <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="50" height="50" style="margin-right:8px; margin-top:-5px;">
+                                <img class="media-object img-circle" src="/images/djkahled.jpg" width="50" height="50" style="margin-right:8px; margin-top:-5px;">
                             </a>
                         </div>
-                        <h4><a href="#" style="text-decoration:none;"><strong>John Doe</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
+                        <h4><a href="#" style="text-decoration:none;"><strong>DJKahled</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
                         <span>
                             <div class="navbar-right">
                                 <div class="dropdown">
-                                    <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <button class="btn btn-link btn-xs" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                         <i class="fa fa-cog" aria-hidden="true"></i>
                                         <span class="caret"></span>
                                     </button>
@@ -337,7 +299,7 @@
                         </span>
                         <hr>
                         <div class="post-content">
-                            <p>Sample post content with picture.</p>
+                            <p>Classic Never Gets Old!</p>
                             <img class="img-responsive" src="https://media2.giphy.com/media/3o6ZtjUZAD5Lf0QFLW/200.webp#3">
                             <p><br><a href="/tags/waynesworld" class="tag">#WaynesWorld</a> <a href="/tags/queen" class="tag">#Queen</a></p>
                         </div>
@@ -357,7 +319,7 @@
                         <div class="media">
                             <div class="pull-left">
                                 <a href="#">
-                                    <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="35" height="35" style="margin-left:3px; margin-right:-5px;">
+                                    <img class="media-object img-circle" src="/images/defaultUser.png" width="35" height="35" style="margin-left:3px; margin-right:-5px;">
                                 </a>
                             </div>
                             <div class="media-body">
@@ -371,14 +333,14 @@
                     <div class="panel-body">
                         <div class="pull-left">
                             <a href="#">
-                                <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="50" height="50" style="margin-right:8px; margin-top:-5px;">
+                                <img class="media-object img-circle" src="/images/deadmau5.png" width="50" height="50" style="margin-right:8px; margin-top:-5px;">
                             </a>
                         </div>
-                        <h4><a href="#" style="text-decoration:none;"><strong>John Doe</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
+                        <h4><a href="#" style="text-decoration:none;"><strong>Deadmau5</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
                         <span>
                             <div class="navbar-right">
                                 <div class="dropdown">
-                                    <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <button class="btn btn-link btn-xs" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                         <i class="fa fa-cog" aria-hidden="true"></i>
                                         <span class="caret"></span>
                                     </button>
@@ -396,11 +358,11 @@
                         <hr>
                         <div ng-repeat="post in controller.user.posts" class="post-content">
                             <p>{{post.comment}}</p>
-                            <p>Sample post content with comments.</p>
+                            <!--<p>Sample post content with comments.</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>-->
+                            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>-->
                         </div>
                         <hr>
                         <div>
@@ -422,14 +384,14 @@
                                     <div class="panel-body">
                                         <div class="pull-left">
                                             <a href="#">
-                                                <img class="media-object img-circle" src="https://diaspote.org/uploads/images/thumb_large_283df6397c4db3fe0344.png" width="35" height="35" style="margin-right:8px; margin-top:-5px;">
+                                                <img class="media-object img-circle" src="/images/hammer.png" width="35" height="35" style="margin-right:8px; margin-top:-5px;">
                                             </a>
                                         </div>
-                                        <h4><a href="#" style="text-decoration:none;"><strong>✪ SтeғOғғιcιel ✪ ツ</strong></a></h4>
+                                        <h4><a href="#" style="text-decoration:none;"><strong>Hammer</strong></a></h4>
                                         <hr>
                                         <div class="post-content">
-                                            Comment example.<br><br>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu sapien. Donec laoreet, nisl quis tempor hendrerit, libero augue blandit turpis, in dignissim odio mauris eu tortor. Ut hendrerit ipsum elit, a elementum nulla ultrices eu. In posuere mollis efficitur. Maecenas justo turpis, tristique sit amet ultricies quis, molestie eget ex. Nam vestibulum consequat tincidunt. Morbi vitae placerat sapien. Phasellus quis mi tincidunt sem scelerisque tincidunt. Ut viverra porttitor sagittis. Phasellus aliquam auctor purus, id sollicitudin mauris pulvinar ac. Vivamus vel erat nec orci ultricies iaculis quis sit amet augue. Vestibulum aliquam felis lorem, interdum porttitor sapien sodales ac. Maecenas id ullamcorper risus. Suspendisse id dui sed urna rutrum pharetra. Nam eu lectus et orci vestibulum bibendum. Mauris et pulvinar dui, ac facilisis leo.
+                                            Truth!<br><br>
+                                            "Cleverly arranged, carefully timed, delivered with maximum effort to create the greatest impact, it works on a receptive audience like a bombshell!"
                                             <br><small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 12 minutes ago</i></a></small></small>
                                         </div>
                                     </div>
@@ -441,14 +403,14 @@
                                     <div class="panel-body">
                                         <div class="pull-left">
                                             <a href="#">
-                                                <img class="media-object img-circle" src="https://lut.im/yR07xwobAA/bZpvdTZmBBTZDJDd.png" width="35" height="35" style="margin-right:8px; margin-top:-5px;">
+                                                <img class="media-object img-circle" src="/images/itsadele.png" width="35" height="35" style="margin-right:8px; margin-top:-5px;">
                                             </a>
                                         </div>
-                                        <h4><a href="#" style="text-decoration:none;"><strong>Mi Chleen</strong></a></h4>
+                                        <h4><a href="#" style="text-decoration:none;"><strong>Itsadele</strong></a></h4>
                                         <hr>
                                         <div class="post-content">
-                                            Another comment.<br><br>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu sapien. Donec laoreet, nisl quis tempor hendrerit, libero augue blandit turpis, in dignissim odio mauris eu tortor. Ut hendrerit ipsum elit, a elementum nulla ultrices eu. In posuere mollis efficitur. Maecenas justo turpis, tristique sit amet ultricies quis, molestie eget ex. Nam vestibulum consequat tincidunt. Morbi vitae placerat sapien. Phasellus quis mi tincidunt sem scelerisque tincidunt. Ut viverra porttitor sagittis. Phasellus aliquam auctor purus, id sollicitudin mauris pulvinar ac. Vivamus vel erat nec orci ultricies iaculis quis sit amet augue. Vestibulum aliquam felis lorem, interdum porttitor sapien sodales ac. Maecenas id ullamcorper risus. Suspendisse id dui sed urna rutrum pharetra. Nam eu lectus et orci vestibulum bibendum. Mauris et pulvinar dui, ac facilisis leo.
+                                            This is one of my go to quotes by them:<br><br>
+                                            “We tend to work well under pressure. But do we row? Oh my dear, we’re the bitchiest band on earth. You’ll have to spend a couple of days with us. We’re at each other’s throats. But if we didn’t disagree, we’d just be yes-men, and we do get the cream in the end.”
                                             <br><small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 9 minutes ago</i></a></small></small>
                                         </div>
                                     </div>
@@ -460,14 +422,14 @@
                                     <div class="panel-body">
                                         <div class="pull-left">
                                             <a href="#">
-                                                <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="35" height="35" style="margin-right:8px; margin-top:-5px;">
+                                                <img class="media-object img-circle" src="/images/jamest.png" width="35" height="35" style="margin-right:8px; margin-top:-5px;">
                                             </a>
                                         </div>
-                                        <h4><a href="#" style="text-decoration:none;"><strong>John Doe</strong></a></h4>
+                                        <h4><a href="#" style="text-decoration:none;"><strong>JamesT</strong></a></h4>
                                         <hr>
                                         <div class="post-content">
-                                            Yet another post.<br><br>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu sapien. Donec laoreet, nisl quis tempor hendrerit, libero augue blandit turpis, in dignissim odio mauris eu tortor. Ut hendrerit ipsum elit, a elementum nulla ultrices eu. In posuere mollis efficitur. Maecenas justo turpis, tristique sit amet ultricies quis, molestie eget ex. Nam vestibulum consequat tincidunt. Morbi vitae placerat sapien. Phasellus quis mi tincidunt sem scelerisque tincidunt. Ut viverra porttitor sagittis. Phasellus aliquam auctor purus, id sollicitudin mauris pulvinar ac. Vivamus vel erat nec orci ultricies iaculis quis sit amet augue. Vestibulum aliquam felis lorem, interdum porttitor sapien sodales ac. Maecenas id ullamcorper risus. Suspendisse id dui sed urna rutrum pharetra. Nam eu lectus et orci vestibulum bibendum. Mauris et pulvinar dui, ac facilisis leo.
+                                            Their concerts are the BEST!<br><br>
+                                            "Dry ice began to envelop the stage, and as red light glowed through the fog, group and audience took on an eerie aspect like a scene from some Wagnerian forest, as arms waved like young saplings in a night breeze."
                                             <br><small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 2 minutes ago</i></a></small></small>
                                         </div>
                                     </div>
@@ -477,7 +439,7 @@
                         <div class="media">
                             <div class="pull-left">
                                 <a href="#">
-                                    <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="35" height="35" style="margin-left:3px; margin-right:-5px;">
+                                    <img class="media-object img-circle" src="/images/defaultUser.png" width="35" height="35" style="margin-left:3px; margin-right:-5px;">
                                 </a>
                             </div>
                             <div class="media-body">
