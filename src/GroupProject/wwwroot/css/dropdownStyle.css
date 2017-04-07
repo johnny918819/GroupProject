@@ -46,7 +46,7 @@
 
     .navbar-dropdown .navbar-caption {
         font-family: "Montserrat";
-        font-size: 1rem;
+        font-size: 1.25rem;
         font-weight: 700;
         white-space: normal;
     }
@@ -148,7 +148,7 @@
 .nav-dropdown {
     display: table !important;
     font-family: "Montserrat";
-    font-size: 0.75rem;
+    font-size: 1.25rem;
     font-weight: 500;
     height: auto !important;
 }
@@ -167,6 +167,7 @@
         margin: 1.667em;
         padding: 0;
         transition: color .2s ease-in-out;
+        font-size: 1.25rem !important;
     }
 
         .nav-dropdown .link.dropdown-toggle {
@@ -200,7 +201,7 @@
         }
 
     .nav-dropdown .btn {
-        font-size: 1rem;
+        font-size: 1.25rem;
         font-weight: 700;
         letter-spacing: 0;
         margin-bottom: 0;
@@ -221,11 +222,12 @@
         left: 100%;
         margin-left: 0.125rem;
         margin-top: -1.25rem;
+        font-size: 1rem !important;
         top: 0;
     }
 
     .nav-dropdown .dropdown-item {
-        font-size: 1rem;
+        font-size: 1.25rem !important;
         font-weight: 500;
         line-height: 2;
         padding: 0.3846em 4.615em 0.3846em 1.5385em;
@@ -284,7 +286,7 @@
     .nav-dropdown-sm::after {
         content: "";
         display: block;
-        height: 3rem;
+        height: 4rem;
         width: 100%;
     }
 
@@ -315,7 +317,7 @@
     .nav-dropdown-sm .link,
     .nav-dropdown-sm .dropdown-item {
         border-top: 1px dotted rgba(255, 255, 255, 0.1);
-        font-size: 0.8125rem;
+        font-size: 1.25rem;
         line-height: 1.6;
         margin: 0 !important;
         padding: 0.875rem 2.4rem 0.875rem 1.5625rem !important;

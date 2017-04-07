@@ -54,36 +54,17 @@
                                 <a class="nav-link link" href="/">Main</a>
                             </li>
                             <li class="nav-item dropdown open">
-                                <a class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">Features</a>
+                                <a class="nav-link link" data-toggle="dropdown-submenu" aria-expanded="true">Tools</a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="/mapview">View Users Near You</a>
-                                    <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle" data-toggle="dropdown-submenu" href="/notFound" aria-expanded="false">Schedule &amp; Organize Events</a>
-                                        <div class="dropdown-menu dropdown-submenu">
-                                            <a class="dropdown-item" href="/notFound">Search for talent</a>
-                                            <a class="dropdown-item" href="/notFound">Search for Enigneers</a>
-                                            <div class="dropdown">
-                                                <a class="dropdown-item dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="false">View all Users</a>
-                                                <div class="dropdown-menu dropdown-submenu">
-                                                    <a class="dropdown-item" href="/mapview">Map</a>
-                                                    <a class="dropdown-item" href="#">List</a>
-                                                </div>
-                                            </div>
-                                            <a class="dropdown-item" href="/notFound">Social buttons</a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle" data-toggle="dropdown-submenu">Pay for Services Securely</a>
-                                        <div class="dropdown-menu dropdown-submenu">
-                                            <a class="dropdown-item" href="#">Paypal Payment Portal</a>
-                                        </div>
-                                    </div>
+                                    <a class="dropdown-item" href="/calendar">Events Calendar</a>
+                                    <a class="dropdown-item" href="/userHome" ng-show="account.isLoggedIn()">View My Profile</a>
                                 </div>
                             </li>
 
                             @* Begin Admin access Menu *@
                             <li class="nav-item dropdown open" ng-show="account.getClaim('IsAdmin')">
-                                <a class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">Admin Access Menu</a>
+                                <a class="nav-link link" data-toggle="dropdown-submenu" aria-expanded="true">Admin Access Menu</a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="/allusers">User List</a>
                                     <a class="dropdown-item" href="/mapview">Map View</a>
@@ -92,18 +73,23 @@
                                     <a class="dropdown-item" href="/editProfile">Edit Profile</a>
                                     <a class="dropdown-item" href="/about">About</a>
                                     <a class="dropdown-item" href="/secret">Secret</a>
-                                    <div ng-show="!account.isLoggedIn()">
-                                        Already have an account with us?
-                                        <a class="btn btn-white" href="/login" ng-show="!account.isLoggedIn()">Login</a>
-                                        <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-                                    </div>
+                                    <a class="dropdown-item" href="/notFound">Error Page</a>
+                                    <a class="dropdown-item" href="/createPost">Create Post</a>
+                                    <a class="dropdown-item" href="/deletePost">Delete Post</a>
+                                    <a class="dropdown-item" href="/editPost">Edit Post</a>
+                                    <a class="dropdown-item" href="/externalRegister">External Register</a>
+                                    <a class="dropdown-item" href="/login">User Login</a>
+                                    <a class="dropdown-item" href="/rating">Star Ratings</a>
+                                    <a class="dropdown-item" href="/register">Register New User</a>
+                                    <a class="dropdown-item" href="/updates">Updates</a>
+                                    <a class="dropdown-item" href="/userProfile">User Profile View</a>
                                     @*<a href="" ng-click="account.loginModal()" ng-show="!account.isLoggedIn()"><strong>Future LogIn Modal</strong></a>*@
                                 </div>
                             </li>
                             @* End Admin access menu *@
 
                             <li class="nav-item dropdown open">
-                                <a class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="true">HELP</a>
+                                <a class="nav-link link btn-white-outline" data-toggle="dropdown-submenu" aria-expanded="true">HELP</a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="/about">Contact us</a>
                                 </div>
@@ -111,18 +97,15 @@
                             <li class="navbar-caption navbar-text" ng-show="!account.isLoggedIn()">
                                 Already have an account with us?
                             </li>
-                            <li class="nav-item" ng-show="!account.isLoggedIn()">
-                                <a class="btn btn-white-outline" aria-expanded="true" href="/login" ng-show="!account.isLoggedIn()">Login</a>
-                                <div ng-show="account.isLoggedIn()">[{{account.getUserName()}}]</div>
-                                <a class="btn btn-white-outline" href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-                                @*<a href="" ng-click="account.loginModal()" ng-show="!account.isLoggedIn()"><strong>Future LogIn Modal</strong></a>*@
-                            </li>
-
                             <li class="nav-item">
                                 <div ng-show="account.isLoggedIn()">
-
-                                    <br />
-                                    <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+                                <a style="color: limegreen !important" href="userHome">{{account.getUserName()}}</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div>
+                                    <a class="btn btn-white-outline" aria-expanded="true" href="/login" ng-show="!account.isLoggedIn()">Login</a>
+                                    <a class="btn btn-white-outline" href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
                                 </div>
                             </li>
                         </ul>

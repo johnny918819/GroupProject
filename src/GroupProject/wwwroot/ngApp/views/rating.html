@@ -1,45 +1,56 @@
-﻿
-<h1>Star Rating Widget</h1>
+﻿<div class="container">
+    <div class="row">
+        <div id="content">
+            <h1> Star Rating Form </h1>
+            <label> Please select select a number of stars and then Add Rating </label>
+            <form class="rating">
+                <br />
+                <input type="radio" id="star5" name="rating" value="5" ng-model="controller.rating.ratingActual" />
+                <label class="full" for="star5"></label>
 
-<form class="rating">
-    <input type="radio" id="star5" name="rating" value="5" ng-model="controller.rating.ratingActual" />
-    <label class="full" for="star5"></label>
+                <input type="radio" id="star4half" name="rating" value="4.5" ng-model="controller.rating.ratingActual" />
+                <label class="half" for="star4half"></label>
 
-    <input type="radio" id="star4half" name="rating" value="4.5" ng-model="controller.rating.ratingActual" />
-    <label class="half" for="star4half"></label>
+                <input type="radio" id="star4" name="rating" value="4" ng-model="controller.rating.ratingActual" />
+                <label class="full" for="star4"></label>
 
-    <input type="radio" id="star4" name="rating" value="4" ng-model="ccontroller.rating.ratingActual" />
-    <label class="full" for="star4"></label>
+                <input type="radio" id="star3half" name="rating" value="3.5" ng-model="controller.rating.ratingActual" />
+                <label class="half" for="star3half"></label>
 
-    <input type="radio" id="star3half" name="rating" value="3.5" ng-model="controller.rating.ratingActual" />
-    <label class="half" for="star3half"></label>
+                <input type="radio" id="star3" name="rating" value="3" ng-model="controller.rating.ratingActual" />
+                <label class="full" for="star3"></label>
 
-    <input type="radio" id="star3" name="rating" value="3" ng-model="controller.rating.ratingActual" />
-    <label class="full" for="star3"></label>
+                <input type="radio" id="star2half" name="rating" value="2.5" ng-model="controller.rating.ratingActual" />
+                <label class="half" for="star2half"></label>
 
-    <input type="radio" id="star2half" name="rating" value="2.5" ng-model="controller.rating.ratingActual" />
-    <label class="half" for="star2half"></label>
+                <input type="radio" id="star2" name="rating" value="2" ng-model="controller.rating.ratingActual" />
+                <label class="full" for="star2"></label>
 
-    <input type="radio" id="star2" name="rating" value="2" ng-model="controller.rating.ratingActual" />
-    <label class="full" for="star2"></label>
+                <input type="radio" id="star1half" name="rating" value="1.5" ng-model="controller.rating.ratingActual" />
+                <label class="half" for="star1half"></label>
 
-    <input type="radio" id="star1half" name="rating" value="1.5" ng-model="controller.rating.ratingActual" />
-    <label class="half" for="star1half"></label>
+                <input type="radio" id="star1" name="rating" value="1" ng-model="controller.rating.ratingActual" />
+                <label class="full" for="star1"></label>
 
-    <input type="radio" id="star1" name="rating" value="1" ng-model="controller.rating.ratingActual" />
-    <label class="full" for="star1"></label>
+                <input type="radio" id="starhalf" name="rating" value="0.5" ng-model="controller.rating.ratingActual" />
+                <label class="half" for="starhalf"></label>
+            </form>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div>
+                Stars Selected= {{controller.rating.ratingActual}}
+            </div>
 
-    <input type="radio" id="starhalf" name="rating" value="0.5" ng-model="controller.rating.ratingActual" />
-    <label class="half" for="starhalf"></label>
-</form>
-<br />
-<br />
-<br />
-
-Stars selected = {{controller.rating.ratingActual}}
-
-<button ng-click="controller.addRating()">Add Rating</button>
-
-<br />
-
-This user's current average rating is: {{controller.avgRating}}
+            <div>
+                <button class="btn-success" ng-click="controller.addRating()">Add Rating</button>
+            </div>
+            <br />
+            <div>
+                This user's current average rating is: {{controller.avgRating}}
+            </div>
+        </div>
+    </div>
+</div>
