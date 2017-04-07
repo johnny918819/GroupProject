@@ -1,258 +1,133 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://bootswatch.com/cosmo/bootstrap.min.css">
-    <div class="mainbody container-fluid">
-        <div class="row">
-            <div class="profileNavbar-wrapper">
-                <div class="container-fluid">
-                    <div class="profileNavbar profileNavbar-default profileNavbar-static-top" role="navigation">
-                        <div class="container-fluid">
-                            <div class="profileNavbar-header">
-                                <button type="button" class="profileNavbar-toggle" data-toggle="collapse" data-target=".profileNavbar-collapse">
-                                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                                </button>
-                                <!--<a class="profileNavbar-brand" href="/about" style="margin-right:-8px; margin-top:-5px;">
-                                    <img alt="Brand" src="/images/defaultUser.png" width="30" height="30">
-                                </a>-->
-                                <!--<a class="profileNavbar-brand" href="/about">*Let Th@t Bang!*</a>-->
-                                <i class="brand_network"><small>gjc Network</small></i>
-                            </div>
-                            <div class="profileNavbar-collapse collapse">
-                                <ul class="profileNav profileNavbar-nav">
-                                    <li><a href="/ngApp/views/userHome.html">Home</a></li>
-                                    <li><a href="/rating">My Rating</a></li>
-                                    <li><span class="badge badge-important">2</span><a href="#"><i class="fa fa-bell-o fa-lg" aria-hidden="false"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="profileNav profileNavbar-nav profileNavbar-right">
-                                    <li uib-dropdown class="dropdown" role="menu">
-                                        <a href="#" uib-dropdown-toggle class="profile-image dropdown-toggle">
-                                            <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
-                                                <img src="{{controller.user.profileImage}}" class="img-responsive img-circle" title="profile" alt="profile" width="30" height="30">
-                                            </span>
-                                            <span class="user-name">
-                                                {{controller.user.userName}}
-                                            </span>
-                                            <b class="caret"></b>
-                                        </a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li role="menuitem">
-                                                <div class="profileNavbar-content">
-                                                    <div class="row">
-                                                        <div class="col-md-5">
-                                                            <img src="{{controller.user.profileImage}}" alt="Alternate Text" class="img-responsive" width="120" height="120" />
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <span>{{controller.user.userName}}</span>
-                                                            <p class="text-muted small">
-                                                                {{controller.user.email}}
-                                                            </p>
-                                                            <div class="divider">
-                                                            </div>
-                                                            <a href="/userHome" class="btn btn-default btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Profile</a>
-                                                            <a href="#" class="btn btn-default btn-xs"><i class="fa fa-address-card-o" aria-hidden="true"></i> Contacts</a>
-                                                            <a href="/editProfile" class="btn btn-default btn-xs"><i class="fa fa-cogs" aria-hidden="true"></i> Edit Profile</a>
-                                                            <a href="/about" class="btn btn-default btn-xs"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Help!</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="profileNavbar-footer">
-                                                    <div class="profileNavbar-footer-content">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <a href="#" class="btn btn-default btn-sm"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Change Passowrd</a>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <a href="#" class="btn btn-default btn-sm pull-right"><i class="fa fa-power-off" aria-hidden="true"></i> Sign Out</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+﻿
+<div style="padding-top:50px;"> </div>
+<div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h1 class="panel-title pull-left" style="font-size:30px;"><i class="fa fa-cogs" aria-hidden="true"></i> Edit Profile Page</h1>
+        </div>
+    </div>
+</div>
+<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h1 class="panel-title pull-left" style="font-size:30px;">{{controller.user.userName}}'s Profile</h1>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3 class="panel-title pull-left">The Basics - All fields are editable, Update Profile to save changes</h3>
+            <br><br>
+            <form class="form-horizontal">
+                <label for="First_name">First name</label>
+                <input ng-model="controller.user.firstName" type="text" class="form-control" id="first_name">
+                <label for="Last_name">Last name</label>
+                <input ng-model="controller.user.lastName" type="text" class="form-control" id="last_name" />
+                <label for="First_name">City</label>
+                <input ng-model="controller.user.city" type="text" class="form-control" id="city">
+                <label for="First_name">State</label>
+                <input ng-model="controller.user.state" type="text" class="form-control" id="state">
+                <label for="First_name">Zip</label>
+                <input ng-model="controller.user.zipCode" type="text" class="form-control" id="zip">
+                <label for="First_name">Country</label>
+                <input ng-model="controller.user.country" type="text" class="form-control" id="country">
+                <label for="First_name">Username</label>
+                <input ng-model="controller.user.userName" type="text" class="form-control" id="username">
+                <label for="First_name">Email</label>
+                <input ng-model="controller.user.email" type="email" class="form-control" id="email">
+                <label for="First_name">Talent</label>
+                <input ng-model="controller.user.talent" type="text" class="form-control" id="talent">
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3 class="panel-title pull-left">5 Impact Words about you! Sell Yourself in 5 words!</h3>
+            <br><br>
+            <form class="form-horizontal">
+                <textarea ng-model="controller.user.sell" type="text" class="form-control" rows="1" id="keywords" placeholder="Like #lyricist #beautifulmusic #jammer #bangingproductions"></textarea>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3 class="panel-title pull-left">Your Avatar</h3>
+            <br><br>
+            <div align="center">
+                <div class="col-lg-12 col-md-12">
+                    <img class="img-thumbnail img-responsive" src="{{controller.user.profileImage}}" width="300" height="300">
                 </div>
-            </div>
-            <div style="padding-top:50px;"> </div>
-            <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h1 class="panel-title pull-left" style="font-size:30px;"><i class="fa fa-cogs" aria-hidden="true"></i> Edit Profile Page</h1>
-                    </div>
+                <div class="col-lg-12 col-md-12">
+                    <button class="btn btn-primary" ng-click="controller.pickFile()"><i class="fa fa-upload" aria-hidden="true"></i> Change Avatar!</button>
                 </div>
-            </div>
-            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h1 class="panel-title pull-left" style="font-size:30px;">{{controller.user.userName}}'s Profile</h1>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h3 class="panel-title pull-left">The Basics - All fields are editable, Update Profile to save changes</h3>
-                        <br><br>
-                        <form class="form-horizontal">
-                            <label for="First_name">First name</label>
-                            <input ng-model="controller.user.firstName" type="text" class="form-control" id="first_name" >
-                            <label for="Last_name">Last name</label>
-                            <input ng-model="controller.user.lastName" type="text" class="form-control" id="last_name" />
-                            <label for="First_name">City</label>
-                            <input ng-model="controller.user.city" type="text" class="form-control" id="city">
-                            <label for="First_name">State</label>
-                            <input ng-model="controller.user.state" type="text" class="form-control" id="state">
-                            <label for="First_name">Zip</label>
-                            <input ng-model="controller.user.zipCode" type="text" class="form-control" id="zip">
-                            <label for="First_name">Country</label>
-                            <input ng-model="controller.user.country" type="text" class="form-control" id="country">
-                            <label for="First_name">Username</label>
-                            <input ng-model="controller.user.userName" type="text" class="form-control" id="username">
-                            <label for="First_name">Email</label>
-                            <input ng-model="controller.user.email" type="email" class="form-control" id="email">
-                            <label for="First_name">Talent</label>
-                            <input ng-model="controller.user.talent" type="text" class="form-control" id="talent">
-                        </form>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h3 class="panel-title pull-left">5 Impact Words about you! Sell Yourself in 5 words!</h3>
-                        <br><br>
-                        <form class="form-horizontal">
-                            <textarea ng-model="controller.user.sell" type="text" class="form-control" rows="1" id="keywords" placeholder="Like #lyricist #beautifulmusic #jammer #bangingproductions"></textarea>
-                        </form>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h3 class="panel-title pull-left">Your Avatar</h3>
-                        <br><br>
-                        <div align="center">
-                            <div class="col-lg-12 col-md-12">
-                                <img class="img-thumbnail img-responsive" src="{{controller.user.profileImage}}" width="300" height="300">
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <button class="btn btn-primary" ng-click="controller.pickFile()"><i class="fa fa-upload" aria-hidden="true"></i> Change Avatar!</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h3 class="panel-title pull-left">My extended profile</h3>
-                        <br><br>
-                        <!--<p>Visibility of your extended profile:</p>
-                        ...
-                        <br><br>-->
-                        <form class="form-horizontal">
-                            <label>Your artist bio, this is your chance to boast about your creative training, experience and accomplishments! Additional talents we need to know about? Instruments you play? Vocal range?</label>
-                            <textarea ng-model="controller.user.bio" class="form-control" rows="5"></textarea>
-                        </form>
-                        <br><br>
-                        <form class="form-horizontal">
-                            <!--<label for="Your_talents">Additional talents we need to know about? Instruments you play? Vocal range?</label>
-                            <input type="text" class="form-control" id="Your_location" placeholder="Fill me out">
-                            <br>
-                            <label for="extras">Aspirations - Career or Hobby?</label>
-                            <input type="text" class="form-control" id="Your_gender" placeholder="Fill me out">
-                            <br>-->
-                            <label>Your Birthday mm/dd</label>
-                            <div class="form-inline" id="birth-date">
-                                <select ng-model="controller.user.birthMonth" id="profile_date_month" name="profile[date][month]" class="form-control">
-                                    <option value="" selected="selected">Month</option>
-                                    <option value="January">January</option>
-                                    <option value="February">February</option>
-                                    <option value="March">March</option>
-                                    <option value="April">April</option>
-                                    <option value="May">May</option>
-                                    <option value="June">June</option>
-                                    <option value="July">July</option>
-                                    <option value="August">August</option>
-                                    <option value="September">September</option>
-                                    <option value="October">October</option>
-                                    <option value="November">November</option>
-                                    <option value="December">December</option>
-                                </select>
-                                <select ng-model="controller.user.birthDay" id="profile_date_day" name="profile[date][day]" class="form-control">
-                                    <option value="" selected="selected">Day</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="22">22</option>
-                                    <option value="23">23</option>
-                                    <option value="24">24</option>
-                                    <option value="25">25</option>
-                                    <option value="26">26</option>
-                                    <option value="27">27</option>
-                                    <option value="28">28</option>
-                                    <option value="29">29</option>
-                                    <option value="30">30</option>
-                                    <option value="31">31</option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!--<hr>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h3 class="panel-title pull-left">Profile settings</h3>
-                        <br><br>
-                        <h4>Search</h4>
-                        <div class="well checkbox">
-                            <label class="checkbox-inline" for="profile_searchable">
-                                <input type="checkbox" name="profile[searchable]" id="profile_searchable" value="true" checked="checked">
-                                Allow for people to search for you within diaspora*
-                            </label>
-                        </div>
-                        <br>
-                        <h4>NSFW</h4>
-                        <p>NSFW (“not safe for work”) is diaspora*’s self-governing community standard for content which may not be suitable to view while at work. If you plan to share such material frequently, please check this option so that everything you share will be hidden from people’s streams unless they choose to view them.</p>
-                        <div class="well checkbox">
-                            <label class="checkbox-inline" for="profile_nsfw">
-                                <input type="checkbox" name="profile[nsfw]" id="profile_nsfw" value="true">
-                                Mark everything I share as NSFW
-                            </label>
-                        </div>-->
-                        <p class="text-danger"><strong><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> If you choose not to select this option, please add the #nsfw tag each time you share such material.</strong></p>
-                        <button class="btn btn-default"><i class="fa fa-fw fa-times" aria-hidden="true"></i> Cancel</button>
-                        <button class="btn btn-primary" ng-click="controller.saveProfile()"><i class="fa fa-fw fa-check" aria-hidden="true"></i> Update Profile</button>
-                    <!--</div>
-                </div>-->
             </div>
         </div>
     </div>
-
-
-    <div>
-        <button ng-click="controller.pickFile()">Update Avatar</button>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3 class="panel-title pull-left">My extended profile</h3>
+            <br><br>
+            <form class="form-horizontal">
+                <label>Your artist bio, this is your chance to boast about your creative training, experience and accomplishments! <br /> Additional talents we need to know about? Instruments you play? Vocal range?</label>
+                <textarea ng-model="controller.user.bio" class="form-control" rows="5"></textarea>
+            </form>
+            <br><br>
+            <form class="form-horizontal">
+                <label>Your Birthday mm/dd</label>
+                <div class="form-inline" id="birth-date">
+                    <select ng-model="controller.user.birthMonth" id="profile_date_month" name="profile[date][month]" class="form-control">
+                        <option value="" selected="selected">Month</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                    <select ng-model="controller.user.birthDay" id="profile_date_day" name="profile[date][day]" class="form-control">
+                        <option value="" selected="selected">Day</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                </div>
+            </form>
+        </div>
     </div>
-</body>
-</html>
+    <button class="btn btn-default"><i class="fa fa-fw fa-times" aria-hidden="true"></i> Cancel</button>
+    <button class="btn btn-primary" ng-click="controller.saveProfile()"><i class="fa fa-fw fa-check" aria-hidden="true"></i> Update Profile</button>
+</div>
+<div style="padding-bottom:100px;"> </div>

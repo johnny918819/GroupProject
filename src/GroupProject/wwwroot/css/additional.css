@@ -447,7 +447,7 @@ h6,
 #menu-0 .dropdown-item:hover,
 #menu-0 .link:focus,
 #menu-0 .dropdown-item:focus {
-  color: #000000;
+  color: #5d5c5c;
 }
 #menu-0 .link[aria-expanded="true"],
 #menu-0 .dropdown-menu {

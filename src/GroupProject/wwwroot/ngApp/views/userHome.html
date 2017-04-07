@@ -9,78 +9,6 @@
     <!--<link rel="stylesheet" href="https://bootswatch.com/cosmo/bootstrap.min.css">-->
     <div class="mainbody container-fluid">
         <div class="row">
-            <div class="navbar-wrapper">
-                <div class="container-fluid">
-                    <div class="navbar navbar-default navbar-static-top" role="navigation">
-                        <div class="container-fluid">
-                            <div class="navbar-header" style="background-color:black;">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                                </button>
-                                <!--<a class="navbar-brand" href="/about" style="margin-right:-8px; margin-top:-5px;">
-                                    <img alt="Brand" src="/images/defaultUser.png" width="30" height="30">
-                                </a>-->
-                            </div>
-                            <div class="navbar-collapse collapse">
-                                <!--<ul class="nav navbar-nav">
-                                    <li><a href="./ORqmj">Stream</a></li>
-                                    <li><a href="#">My Activity</a></li>
-                                    <li><span class="badge badge-important">2</span><a href="#"><i class="fa fa-bell-o fa-lg" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i></a></li>
-                                </ul>-->
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li uib-dropdown class="dropdown" role="menu">
-                                        <a href="#" uib-dropdown-toggle class="profile-image dropdown-toggle">
-                                            <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
-                                                <img src="{{controller.user.profileImage}}" class="img-responsive img-circle" title="profile" alt="profile" width="30" height="30">
-                                            </span>
-                                            <span class="user-name">
-                                                {{controller.user.userName}}
-                                            </span>
-                                            <b class="caret"></b>
-                                        </a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li role="menuitem">
-                                                <div class="navbar-content">
-                                                    <div class="row">
-                                                        <div class="col-md-5">
-                                                            <img src="{{controller.user.profileImage}}" alt="Alternate Text" class="img-responsive" width="120" height="120" />
-                                                        </div>
-                                                        <div class="col-md-7">
-                                                            <span>{{controller.user.firstName}}</span>
-                                                            <p class="text-muted small">
-                                                                {{controller.user.email}}
-                                                            </p>
-                                                            <div class="divider">
-                                                            </div>
-                                                            <a href="/editProfile" class="btn btn-default btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i>Edit Profile</a>
-                                                            <a href="#" class="btn btn-default btn-xs"><i class="fa fa-address-card-o" aria-hidden="true"></i> Contacts</a>
-                                                            <a href="#" class="btn btn-default btn-xs"><i class="fa fa-cogs" aria-hidden="true"></i> Settings</a>
-                                                            <a href="#" class="btn btn-default btn-xs"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Help!</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="navbar-footer">
-                                                    <div class="navbar-footer-content">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <a href="#" class="btn btn-default btn-sm"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Change Passowrd</a>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <a href="#" class="btn btn-default btn-sm pull-right"><i class="fa fa-power-off" aria-hidden="true"></i> Sign Out</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div style="padding-top:50px;"> </div>
             <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
                 <div class="panel panel-default">
@@ -88,6 +16,9 @@
                         <div class="media">
                             <div align="center">
                                 <img class="thumbnail img-responsive" src="{{controller.user.profileImage}}" width="300" height="300">
+                            </div>
+                            <div align="center" class="alert-danger">
+                                My Current Rating: {{controller.user.averageRating}}
                             </div>
                             <div class="media-body">
                                 <h3 class="headName">Map View</h3>
@@ -125,10 +56,63 @@
                     <div class="panel-body">
                         <span>
                             <h1 class="panel-title pull-left" style="font-size:30px;">{{controller.user.firstName}} {{controller.user.lastName}} <small>{{controller.user.email}}</small> <i class="fa fa-check text-success" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="John Doe is sharing with you"></i></h1>
+                            <!-- Begin Profile drop down mini NavBar utility -->
+                            <ul class="nav navbar-right">
+                                <li uib-dropdown class="dropdown" role="menu">
+                                    <a href="#" uib-dropdown-toggle class="profile-image dropdown-toggle">
+                                        <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
+                                            <img src="{{controller.user.profileImage}}" class="img-responsive img-circle" title="profile" alt="profile" width="30" height="30">
+                                        </span>
+                                        <span class="user-name">
+                                            {{controller.user.userName}}
+                                        </span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li role="menuitem">
+                                            <div class="navbar-content">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <img src="{{controller.user.profileImage}}" alt="Alternate Text" class="img-responsive" width="120" height="120" />
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <span>{{controller.user.firstName}} {{controller.user.lastName}}</span>
+                                                    </div>
+                                                    <div class="divider">
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <div>
+                                                        <ul class="nav">
+                                                            <li>
+                                                                <a href="/editProfile" class="btn btn-default btn-xs">Edit Profile</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="btn btn-default btn-xs">Contacts</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="btn btn-default btn-xs">Settings</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/about" class="btn btn-default btn-xs">Help!</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/editProfile" class="btn btn-default btn-xs">Change Password</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="btn btn-default btn-xs">Sign Out</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <!-- End Profile drop down mini NavBar utility -->
                             <div class="dropdown pull-right">
                                 <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     Friends
-                                    <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                     <li><a href="#">Family</a></li>
@@ -165,7 +149,7 @@
                             </a>
                         </div>
                         <h4><a href="#" style="text-decoration:none;"><strong>{{controller.user.userName}}</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
-                        
+
                         <span>
                             <div class="navbar-right">
                                 <div class="dropdown">
@@ -185,13 +169,13 @@
                             </div>
                         </span>
                         <hr>
-                        <div class="post-content"> <!--post data not actual, just demo at this point-->
-                            
+                        <div class="post-content">
+                            <!--post data not actual, just demo at this point-->
                             <!--<div class="img-rounded" id="homePost">
                                 <div id="postBlock">
                                     <h1>Posts</h1>-->
-                                    <!--<h1></h1><a class="glyphicon glyphicon-comment" style="font-size:1.5em; margin:30px; color:orange;" href="/postCreate"></a>-->
-                                    <!--<br />
+                            <!--<h1></h1><a class="glyphicon glyphicon-comment" style="font-size:1.5em; margin:30px; color:orange;" href="/postCreate"></a>-->
+                            <!--<br />
                                     <div ng-repeat="post in controller.posts" class="list-group">
                                         <ul href="#" class="list-group ">
                                             <li class="shadowDark img-rounded" id="namebox">
@@ -221,7 +205,8 @@
                                         <img id="postImage" width="650" class="shadowDark img-responsive" ng-src="{{post.item}}" />
                                     </li>
                                 </ul>
-                                <div> <!--ng-controller="PostController as postVM">-->
+                                <div>
+                                    <!--ng-controller="PostController as postVM">-->
                                     <a id="EditGliphicon" class="glyphicon glyphicon-remove" ng-click="postVM.showModalDelPost(post.id)"></a>
                                     <a id="EditGliphicon" class="glyphicon glyphicon-pencil" ng-click="postVM.showModalEditPost(post.id)"></a>
                                 </div>
@@ -511,7 +496,7 @@
         </ul>
     </div>
 
-        <!--<div>
+    <!--<div>
         <h3 class="headName">Talent Search</h3>
         <div class="bar">
             <input ng-model="controller.search" ng-model-options="{debounce:1000}" ng-change="controller.fetch()" placeholder="Enter talent, city, or zip" />
@@ -523,6 +508,17 @@
         </ul>
     </div>-->
     <br />
+
+
+
+    <
+    <b
     <br>
+
+
+
+
+
+     <
 </body>
 </html>
