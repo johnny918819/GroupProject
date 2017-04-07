@@ -1,14 +1,16 @@
 <!--Gino-->
-<div class="container-fluid" style="background-color:white; margin:5%;">
-    <div class="btn-toolbar btn btn warning" ui-calendar="controller.uiConfig.calendar" ng-model="controller.eventSources"></div>
+<div class="col-lg-10">
+    <div style="background-color:white; margin:5%; padding:2%;" class="img-rounded">
+        <div class="btn-toolbar btn btn warning" ui-calendar="controller.uiConfig.calendar" ng-model="controller.eventSources"></div>
+        <button ng-click="controller.EventModal()" class="btn btn-danger">Add Event</button>
+        
+    </div>
+    
 </div>
 <!--the code for the modal-->
 
-<div class="btn-toolbar btn btn warning"  ui-calendar="controller.uiConfig.calendar" ng-model="controller.eventSources"></div>
-<!--the code for the modal-->
-<button ng-click="controller.EventModal()" class="btn btn-danger">Add Event</button>
     <!--Cort-->
-<center>
+<!--<center>
     <div class="container-fluid">
         <label>Click here to Pay Fee for Calendar Event add</label>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -30,4 +32,4 @@
     </ul>
 </div>
     </div>
-</center>
+</center>-->
